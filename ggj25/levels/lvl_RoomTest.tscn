@@ -1,56 +1,84 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjxu7ymt3wlsv"]
+[gd_scene load_steps=8 format=3 uid="uid://bjxu7ymt3wlsv"]
 
+[ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_ai5vb"]
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_fokkw"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="2_hq3p7"]
 [ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="3_8jc1j"]
+[ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="5_gf6pc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slcvs"]
+shader = ExtResource("1_ai5vb")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
 
 [node name="Node3D2" type="Node3D"]
 
-[node name="Floor" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_slcvs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 use_collision = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor"]
 mesh = SubResource("BoxMesh_kqw4f")
 skeleton = NodePath("")
 
-[node name="WallLeft" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallLeft" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(10, 0, 0, 0, 9.49386, 0, 0, 0, 0.266045, -0.0106361, 5.60184, -5.15279)
 use_collision = true
 
-[node name="WallRight" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallRight" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.95832, 5.63414, 5.08551)
 use_collision = true
 
-[node name="WallBack" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallBack" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, -0.266045, 0, 9.49386, 0, 10, 0, -1.16292e-08, -5.14368, 5.65043, -0.00750303)
 use_collision = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, 1.30453e-08, -0.0322656, 13.3562, 19.5897, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, -3.72199e-08, -0.0322656, 13.3562, 19.5897, 0)
 
-[node name="WallLeft2" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallLeft2" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 4.91649, 5.60184, -10.0815)
 use_collision = true
 
-[node name="Player" parent="." instance=ExtResource("1_fokkw")]
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_fokkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
 
-[node name="BubbleSpawner" parent="." instance=ExtResource("2_hq3p7")]
+[node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_hq3p7")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.1411, 2.07397, 4.95249)
 
-[node name="WallLeft3" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallLeft3" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-2.66045, 0, -1.19386e-07, 0, 90.1334, 0, 4.48743e-06, 0, -2.66045, 12.1257, 0.886421, -9.22287)
 use_collision = true
 size = Vector3(5.52063, 0.0134277, 0.287109)
 
-[node name="WallLeft4" type="CSGBox3D" parent="." groups=["poppable"]]
+[node name="WallLeft4" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-2.66045, 0, -1.19386e-07, 0, 90.1334, 0, 4.48743e-06, 0, -2.66045, 12.1257, 3.44741, -9.22287)
 use_collision = true
 size = Vector3(5.52063, 0.0134277, 0.287109)
 
-[node name="Fan" parent="." instance=ExtResource("3_8jc1j")]
+[node name="Fan" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_8jc1j")]
 transform = Transform3D(0.399714, 0, 13.7965, 0, 3.62402, 0, -9.99549, 0, 0.551714, 5.87396, 2.32181, -13.3995)
 power = 3.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_gf6pc")]

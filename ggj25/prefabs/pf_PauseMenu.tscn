@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://r5iernwak6gt"]
+
+[sub_resource type="SystemFont" id="SystemFont_26vvu"]
+subpixel_positioning = 0
+
+[node name="PauseMenu" type="Node2D"]
+
+[node name="Pause" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Pause"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pause/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -90.0
+offset_right = 50.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_26vvu")
+theme_override_font_sizes/font_size = 30
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="Pause/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 10.0
+offset_right = 45.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[node name="Exit" type="Button" parent="Pause/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 90.0
+offset_right = 45.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"

@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv2bh8g054osy"]
+[gd_scene load_steps=6 format=3 uid="uid://cv2bh8g054osy"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_dk8l6"]
+[ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="1_h2lje"]
+[ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_tmxfe"]
+[ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="3_2sx38"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3528r"]
+shader = ExtResource("1_tmxfe")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="NickTestScene" type="Node3D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_3528r")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,6 +34,12 @@ render_target_update_mode = 4
 [node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(19.9635, 0, 0, 0, 0.998173, 0, 0, 0, 19.9635, 0, 0, 0)
 use_collision = true
+material = ExtResource("1_h2lje")
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_dk8l6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.523142, 2.9646, 0.479514)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.77533, 0.631556, 0, -0.631556, 0.77533, -0.177026, 6.90218, 0.090127)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_2sx38")]
