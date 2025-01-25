@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var pause = $Pause
-@onready var player = $Player
+@onready var player = $CharacterBody3D
 var isPaused = false
 
 # Called when the node enters the scene tree for the first time.
