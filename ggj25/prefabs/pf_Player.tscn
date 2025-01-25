@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
 [ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
-[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="3_t7ex3"]
+[ext_resource type="PackedScene" uid="uid://cd4763redojxq" path="res://prefabs/pf_PortableFan.tscn" id="3_dev6a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
@@ -26,7 +26,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 
-[node name="Fan" parent="CharacterBody3D" instance=ExtResource("3_t7ex3")]
-transform = Transform3D(-2, 0, -3.01992e-06, 0, 2, 0, 3.01992e-07, 0, -20, 0, 0, -0.482397)
-falloff = true
-power = 0.25
+[node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.673047)
