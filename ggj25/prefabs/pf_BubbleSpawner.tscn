@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://j4sd65yaxc0i"]
 
-[ext_resource type="Script" path="res://source/bubble_spawner.gd" id="1_knpvm"]
-[ext_resource type="PackedScene" uid="uid://chisax6gmxmwm" path="res://bubble.tscn" id="2_ake4c"]
+[ext_resource type="Script" path="res://scripts/scr_BubbleSpawner.gd" id="1_knpvm"]
+[ext_resource type="PackedScene" uid="uid://chisax6gmxmwm" path="res://prefabs/pf_Bubble.tscn" id="2_ake4c"]
 
 [node name="BubbleSpawner" type="CSGCylinder3D"]
 script = ExtResource("1_knpvm")

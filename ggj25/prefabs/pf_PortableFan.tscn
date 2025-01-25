@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd4763redojxq"]
+
+[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="1_45sr3"]
+
+[node name="PortableFan" type="Node3D"]
+
+[node name="Fan" parent="." instance=ExtResource("1_45sr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.135366, 0, 0.0296283)
+
+[node name="FanModel" type="Node3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Handle" type="CSGCylinder3D" parent="FanModel"]
+
+[node name="Blower" type="CSGCylinder3D" parent="FanModel"]
+transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0, 1.45407, 0)

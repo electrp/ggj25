@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjxu7ymt3wlsv"]
 
-[ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://Player.tscn" id="1_p1pp2"]
-[ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://BubbleSpawner.tscn" id="2_dgg45"]
-[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://Fan.tscn" id="3_w3txm"]
+[ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_fokkw"]
+[ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="2_hq3p7"]
+[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="3_8jc1j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
 
@@ -35,10 +35,10 @@ transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 4.91649, 5.60184, -10.0815)
 use_collision = true
 
-[node name="Player" parent="." instance=ExtResource("1_p1pp2")]
+[node name="Player" parent="." instance=ExtResource("1_fokkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
 
-[node name="BubbleSpawner" parent="." instance=ExtResource("2_dgg45")]
+[node name="BubbleSpawner" parent="." instance=ExtResource("2_hq3p7")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.1411, 2.07397, 4.95249)
 
 [node name="WallLeft3" type="CSGBox3D" parent="." groups=["poppable"]]
@@ -51,6 +51,6 @@ transform = Transform3D(-2.66045, 0, -1.19386e-07, 0, 90.1334, 0, 4.48743e-06, 0
 use_collision = true
 size = Vector3(5.52063, 0.0134277, 0.287109)
 
-[node name="Fan" parent="." instance=ExtResource("3_w3txm")]
+[node name="Fan" parent="." instance=ExtResource("3_8jc1j")]
 transform = Transform3D(0.399714, 0, 13.7965, 0, 3.62402, 0, -9.99549, 0, 0.551714, 5.87396, 2.32181, -13.3995)
 power = 3.0

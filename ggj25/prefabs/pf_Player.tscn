@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5logkqgxqaun"]
 
-[ext_resource type="Script" path="res://source/Player.gd" id="1_7qmpx"]
-[ext_resource type="Script" path="res://source/CharacterBody.gd" id="2_v3qta"]
-[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://Fan.tscn" id="3_t7ex3"]
+[ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
+[ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
+[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="3_t7ex3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
