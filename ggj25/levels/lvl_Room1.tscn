@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=7 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="2_j1ux3"]
-[ext_resource type="PackedScene" uid="uid://cvtqjhvbijcac" path="res://prefabs/pf_Vent.tscn" id="3_xm7k1"]
 [ext_resource type="PackedScene" path="res://prefabs/pf_PauseMenu.tscn" id="5_upi7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
@@ -14,26 +13,6 @@ shader_parameter/colors = 12
 shader_parameter/dither_size = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
-
-[sub_resource type="GDScript" id="GDScript_mkm0p"]
-resource_name = "wall"
-script/source = "extends CSGBox3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_pf_vent_bubble_entered() -> void:
-	self.queue_free()
-	pass # Replace with function body.
-"
 
 [node name="Node3D2" type="Node3D"]
 
@@ -104,15 +83,4 @@ transform = Transform3D(1.31134e-06, 0, -0.266045, 0, 9.49386, 0, 10, 0, 3.48876
 use_collision = true
 size = Vector3(1.9458, 1, 1)
 
-[node name="PfVent" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_xm7k1")]
-transform = Transform3D(6.69158, 0, 0, 0, 1, 0, 0, 0, 1, 19.4005, 2.284, 0.667525)
-
-[node name="WallLeft6" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(10, 0, 4.65168e-08, 0, 9.49386, 0, -1.74846e-06, 0, 0.266045, 18.7159, 5.2587, 4.89725)
-use_collision = true
-size = Vector3(1.2196, 0.990784, 1)
-script = SubResource("GDScript_mkm0p")
-
 [node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
-
-[connection signal="bubble_entered" from="SubViewportContainer/SubViewport/PfVent" to="SubViewportContainer/SubViewport/WallLeft6" method="_on_pf_vent_bubble_entered"]
