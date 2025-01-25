@@ -6,6 +6,14 @@
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+use_collision = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_kqw4f")
+skeleton = NodePath("")
+
 [node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 9.49386, 0, 0, 0, 0.266045, -0.0106361, 5.60184, -5.15279)
 use_collision = true
@@ -27,11 +35,3 @@ use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_p1pp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
-use_collision = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGBox3D"]
-mesh = SubResource("BoxMesh_kqw4f")
-skeleton = NodePath("")
