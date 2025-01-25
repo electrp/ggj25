@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmjmirg3qxamh"]
+
+[ext_resource type="Script" path="res://scripts/scr_Door.gd" id="1_yugjp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kts2n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aawdx"]
+
+[node name="PfDoor" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00707412, 0, 0.000481844)
+script = ExtResource("1_yugjp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+mesh = SubResource("BoxMesh_kts2n")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["poppable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_aawdx")
