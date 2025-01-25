@@ -30,7 +30,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 
 [node name="Fan" parent="CharacterBody3D" instance=ExtResource("3_t7ex3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
+transform = Transform3D(-2, 0, -3.01992e-06, 0, 2, 0, 3.01992e-07, 0, -20, 0, 0, -0.482397)
+falloff = true
+power = 0.25
 
 [node name="Pause" type="CanvasLayer" parent="."]
 

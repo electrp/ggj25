@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjxu7ymt3wlsv"]
+[gd_scene load_steps=4 format=3 uid="uid://bjxu7ymt3wlsv"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://Player.tscn" id="1_p1pp2"]
+[ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://BubbleSpawner.tscn" id="2_dgg45"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Floor" type="CSGBox3D" parent="."]
+[node name="Floor" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
 use_collision = true
 
@@ -14,24 +15,27 @@ use_collision = true
 mesh = SubResource("BoxMesh_kqw4f")
 skeleton = NodePath("")
 
-[node name="WallLeft" type="CSGBox3D" parent="."]
+[node name="WallLeft" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(10, 0, 0, 0, 9.49386, 0, 0, 0, 0.266045, -0.0106361, 5.60184, -5.15279)
 use_collision = true
 
-[node name="WallRight" type="CSGBox3D" parent="."]
+[node name="WallRight" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.95832, 5.63414, 5.08551)
 use_collision = true
 
-[node name="WallBack" type="CSGBox3D" parent="."]
+[node name="WallBack" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, -0.266045, 0, 9.49386, 0, 10, 0, -1.16292e-08, -5.14368, 5.65043, -0.00750303)
 use_collision = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, 1.30453e-08, -0.0322656, 13.3562, 19.5897, 0)
 
-[node name="WallLeft2" type="CSGBox3D" parent="."]
+[node name="WallLeft2" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 4.91649, 5.60184, -10.0815)
 use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_p1pp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
+
+[node name="BubbleSpawner" parent="." instance=ExtResource("2_dgg45")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 13.1411, 2.3459, 4.95249)
