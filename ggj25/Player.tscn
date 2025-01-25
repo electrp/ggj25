@@ -33,7 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
 
 [node name="Pause" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="Pause"]
 layout_mode = 3
@@ -70,24 +69,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -45.0
+offset_top = 10.0
 offset_right = 45.0
-offset_bottom = 31.0
+offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Continue"
 
 [node name="Exit" type="Button" parent="Pause/Control"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -45.0
-offset_top = -110.0
+offset_top = 90.0
 offset_right = 45.0
-offset_bottom = -79.0
+offset_bottom = 121.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 text = "Exit
 "
