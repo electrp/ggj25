@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="2_j1ux3"]
-[ext_resource type="PackedScene" path="res://prefabs/pf_Vent.tscn" id="3_xm7k1"]
+[ext_resource type="PackedScene" uid="uid://cvtqjhvbijcac" path="res://prefabs/pf_Vent.tscn" id="3_xm7k1"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="5_upi7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]

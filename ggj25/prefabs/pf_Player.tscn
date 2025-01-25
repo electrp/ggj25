@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5logkqgxqaun"]
+[gd_scene load_steps=8 format=3 uid="uid://b5logkqgxqaun"]
 
 [ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
 [ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
@@ -7,6 +7,14 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
+
+[sub_resource type="Environment" id="Environment_u23h3"]
+volumetric_fog_enabled = true
+
+[sub_resource type="FogMaterial" id="FogMaterial_0nncf"]
+albedo = Color(0.37, 0.37, 0.3663, 1)
+height_falloff = 0.2
+edge_fade = 0.85
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
@@ -25,6 +33,13 @@ shape = SubResource("CapsuleShape3D_5qq5j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
+environment = SubResource("Environment_u23h3")
+
+[node name="FogVolume" type="FogVolume" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91038e-11, 2.80016, -1.86265e-09)
+shape = 4
+material = SubResource("FogMaterial_0nncf")
 
 [node name="Fan" parent="CharacterBody3D" instance=ExtResource("3_t7ex3")]
 transform = Transform3D(-2, 0, -3.01992e-06, 0, 2, 0, 3.01992e-07, 0, -20, 0, 0, -0.482397)

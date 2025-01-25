@@ -2,11 +2,11 @@ shader_type canvas_item;
 
 render_mode unshaded;
 
-#define MAXCOLORS 16
+#define MAXCOLORS 32
 
 uniform bool enabled = true;
 uniform bool dithering = true;
-uniform int colors : hint_range(1, MAXCOLORS) = 12;
+uniform int colors : hint_range(1, MAXCOLORS) = 16;
 uniform int dither_size: hint_range(1, 8) = 1;
 
 float dithering_pattern(ivec2 fragcoord) {
