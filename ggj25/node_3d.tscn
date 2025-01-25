@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lko34"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
@@ -17,11 +17,14 @@ use_collision = true
 size = Vector3(26.3124, 1, 23.9188)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470948, 1.74546, 0.0899035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470948, 2.12778, 0.0899035)
 script = ExtResource("1_xmo05")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_ijbdt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_5qq5j")
 
 [node name="Head" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
