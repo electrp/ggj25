@@ -30,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0181284, 1.78814e-07, 0.00
 disable_mode = 2
 collision_layer = 2
 gravity_scale = 0.0
+linear_damp = 0.952
 script = SubResource("GDScript_75yce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
