@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://divgqk0d2lwlt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1un2f"]
+
+[node name="Fan" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0206329, -0.021315, 0.0230906)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_1un2f")

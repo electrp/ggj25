@@ -26,10 +26,10 @@ func _on_rigid_body_3d_body_entered(body: Node) -> void:
 [sub_resource type="SphereShape3D" id="SphereShape3D_cghdm"]
 
 [node name="Bubble" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0181284, 1.78814e-07, 0.00431776)
 script = SubResource("GDScript_75yce")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0282093, 0.059762, -0.0133008)
 disable_mode = 2
 collision_layer = 2
 gravity_scale = 0.0
@@ -43,6 +43,7 @@ shape = SubResource("SphereShape3D_cghdm")
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
+texture_filter = 0
 texture = ExtResource("1_3g3et")
 
 [connection signal="body_entered" from="RigidBody3D" to="." method="_on_rigid_body_3d_body_entered"]
