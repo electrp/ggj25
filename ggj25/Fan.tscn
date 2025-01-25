@@ -20,6 +20,9 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if(!activate):
+		pass
+	
 	var norm = end_marker.global_position - self.global_position
 	falloff_scale = norm.length()
 	plane = Plane(norm.normalized(), self.global_position);
@@ -36,7 +39,6 @@ func _physics_process(delta: float) -> void:
 		if(falloff):
 			var dist: float = plane.distance_to(node.global_position)
 			var scale = abs(1 - dist / falloff_scale)
-			print(scale)
 			rb.apply_impulse(power * scale * plane.normal)
 		else:
 			rb.apply_impulse(power * plane.normal)
@@ -44,7 +46,6 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	
 	pass # Replace with function body.
 "
 
