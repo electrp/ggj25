@@ -1,36 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://blm7dp6hmnlo3"]
+[gd_scene load_steps=5 format=3 uid="uid://b5logkqgxqaun"]
 
-[ext_resource type="Script" path="res://character_body_3d.gd" id="1_xmo05"]
-[ext_resource type="PackedScene" path="res://bubble.tscn" id="2_ycisg"]
+[ext_resource type="Script" path="res://TestScene.gd" id="1_7sy4c"]
+[ext_resource type="Script" path="res://Player.gd" id="1_xmo05"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lko34"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
 
 [node name="Node3D" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14755, 0.0329599, 0.124051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
+script = ExtResource("1_7sy4c")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["popping"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13526, -4.76837e-07, 0.787421)
 use_collision = true
 size = Vector3(26.3124, 1, 23.9188)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["popping"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.536979, 11.5547, -0.172781)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0470948, 2.12778, 0.0899035)
 script = ExtResource("1_xmo05")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_ijbdt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" groups=["popping"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103409, -0.0534096, -0.00278568)
-shape = SubResource("CapsuleShape3D_lko34")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_5qq5j")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.40739, 0.913254, 0, -0.913254, 0.40739, 0.0470948, 13.4819, 4.92665)
 
-[node name="Bubble" parent="." instance=ExtResource("2_ycisg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14603, 1.90073, -2.34665)
+[node name="Pause" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.902352, 0.430999, 0, -0.430999, 0.902352, 0.140345, 9.47971, 9.85657)
+[node name="Control" type="Control" parent="Pause"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pause/Control"]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -100.0
+scale = Vector2(2, 2)
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
