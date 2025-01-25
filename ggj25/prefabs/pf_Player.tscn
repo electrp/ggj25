@@ -12,6 +12,7 @@
 volumetric_fog_enabled = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_0nncf"]
+density = 0.2
 albedo = Color(0.37, 0.37, 0.3663, 1)
 height_falloff = 0.2
 edge_fade = 0.85
@@ -34,12 +35,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
+cull_mask = 1048573
 environment = SubResource("Environment_u23h3")
+fov = 90.0
 
-[node name="FogVolume" type="FogVolume" parent="CharacterBody3D/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91038e-11, 2.80016, -1.86265e-09)
+[node name="FogVolume" type="FogVolume" parent="CharacterBody3D/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0067358, 2.80016, -0.145672)
 shape = 4
 material = SubResource("FogMaterial_0nncf")
 
+[node name="FanModel" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.502638, -0.582478, -0.90417)
+
+[node name="Handle" type="CSGCylinder3D" parent="CharacterBody3D/Head/Camera3D/FanModel"]
+layers = 2
+
+[node name="Blower" type="CSGCylinder3D" parent="CharacterBody3D/Head/Camera3D/FanModel"]
+transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0, 1.45407, 0)
+layers = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="ViewmodelCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+cull_mask = 1047554
+fov = 90.0
+
 [node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.673047)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.91038e-11, 0, -0.673047)

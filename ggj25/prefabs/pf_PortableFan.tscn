@@ -9,11 +9,3 @@ transform = Transform3D(2.72637, 0, 0, 0, 2.72637, 0, 0, 0, 16.9897, 0.135366, 0
 falloff = true
 power = 1.0
 activate = false
-
-[node name="FanModel" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0, 0, 0)
-
-[node name="Handle" type="CSGCylinder3D" parent="FanModel"]
-
-[node name="Blower" type="CSGCylinder3D" parent="FanModel"]
-transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0, 1.45407, 0)

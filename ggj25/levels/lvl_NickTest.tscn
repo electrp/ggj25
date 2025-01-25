@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv2bh8g054osy"]
+[gd_scene load_steps=8 format=3 uid="uid://cv2bh8g054osy"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_dk8l6"]
 [ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="1_h2lje"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_tmxfe"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="3_2sx38"]
+[ext_resource type="Material" uid="uid://ccuh8yp781pd7" path="res://assets/materials/mat_Ceiling.tres" id="3_jutcf"]
 [ext_resource type="Material" uid="uid://dtf0gntn1ya0r" path="res://assets/materials/mat_Wall.tres" id="4_qs2dh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3528r"]
@@ -38,18 +39,37 @@ material_override = ExtResource("1_h2lje")
 use_collision = true
 material = ExtResource("1_h2lje")
 
+[node name="ceiling" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 10, 0)
+material_override = ExtResource("3_jutcf")
+use_collision = true
+material = ExtResource("1_h2lje")
+
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_dk8l6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.523142, 2.9646, 0.479514)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.77533, 0.631556, 0, -0.631556, 0.77533, -0.177026, 6.90218, 0.090127)
+layers = 3
 
 [node name="wall" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 0.3, 0, 5, -10.15)
 material_override = ExtResource("4_qs2dh")
+use_collision = true
+
+[node name="wall3" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-8.74228e-07, 0, -0.3, 0, 10, 0, 20, 0, -1.31134e-08, 10, 5, -0.15)
+material_override = ExtResource("4_qs2dh")
+use_collision = true
+
+[node name="wall4" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-8.74228e-07, 0, -0.3, 0, 10, 0, 20, 0, -1.31134e-08, -10, 5, -0.15)
+material_override = ExtResource("4_qs2dh")
+use_collision = true
 
 [node name="wall2" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 0.3, 0, 5, 10.0475)
 material_override = ExtResource("4_qs2dh")
+use_collision = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_2sx38")]
