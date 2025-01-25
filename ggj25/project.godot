@@ -99,6 +99,4 @@ ui_run={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 scaling_3d/mode=1
