@@ -1,12 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjxu7ymt3wlsv"]
+[gd_scene load_steps=3 format=3 uid="uid://bjxu7ymt3wlsv"]
 
-[ext_resource type="PackedScene" uid="uid://cka0dqv71tcmo" path="res://Player.tscn" id="1_p1pp2"]
+[ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://Player.tscn" id="1_p1pp2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(-129.523, 0, 0, 0, -3.46743e-06, 0.258097, 0, -79.3255, -1.12817e-08, 0, 0.997602, 0)
-use_collision = true
 
 [node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 9.49386, 0, 0, 0, 0.266045, -0.0106361, 5.60184, -5.15279)
@@ -29,3 +27,11 @@ use_collision = true
 
 [node name="Player" parent="." instance=ExtResource("1_p1pp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+use_collision = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGBox3D"]
+mesh = SubResource("BoxMesh_kqw4f")
+skeleton = NodePath("")
