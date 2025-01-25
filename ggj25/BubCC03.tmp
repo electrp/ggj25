@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://j4sd65yaxc0i"]
+
+[ext_resource type="Script" path="res://source/bubble_spawner.gd" id="1_knpvm"]
+[ext_resource type="PackedScene" uid="uid://chisax6gmxmwm" path="res://bubble.tscn" id="2_ake4c"]
+
+[node name="BubbleSpawner" type="CSGCylinder3D"]
+script = ExtResource("1_knpvm")
+bubble_scene = ExtResource("2_ake4c")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.1, 5.32907e-16, 0, -8.88178e-17, 0.6, 0, 1.221, 0.012)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 7.10543e-16, 0, -8.88178e-17, 0.8, 0, 1.071, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.77803, 0)
