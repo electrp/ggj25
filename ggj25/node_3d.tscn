@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://blm7dp6hmnlo3"]
+[gd_scene load_steps=6 format=3 uid="uid://blm7dp6hmnlo3"]
 
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_xmo05"]
 [ext_resource type="PackedScene" uid="uid://chisax6gmxmwm" path="res://bubble.tscn" id="2_ycisg"]
+[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://Fan.tscn" id="3_cf5dq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
@@ -34,3 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14603, 1.90073, -2.34665)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.902352, 0.430999, 0, -0.430999, 0.902352, 0.140345, 9.47971, 9.85657)
+
+[node name="Fan" parent="." instance=ExtResource("3_cf5dq")]
+transform = Transform3D(2.92565, 0, 0, 0, 2.87585, 0, 0, 0, 6.06575, -3.86871, 1.78649, -2.97036)
+power = 54.0

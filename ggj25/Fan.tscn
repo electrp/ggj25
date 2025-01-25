@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			print(scale)
 			rb.apply_impulse(power * scale * plane.normal)
 		else:
-			rb.apply_impulse(plane.normal)
+			rb.apply_impulse(power * plane.normal)
 					
 	pass
 
