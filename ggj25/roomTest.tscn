@@ -1,27 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw2aluqkpd36p"]
+[gd_scene load_steps=2 format=3 uid="uid://bjxu7ymt3wlsv"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_nd34l"]
+[ext_resource type="PackedScene" uid="uid://cka0dqv71tcmo" path="res://Player.tscn" id="1_p1pp2"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 0.264913, 0, -10, -1.15797e-08, 0, 0.997602, 0)
-mesh = SubResource("BoxMesh_nd34l")
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(-129.523, 0, 0, 0, -3.46743e-06, 0.258097, 0, -79.3255, -1.12817e-08, 0, 0.997602, 0)
+use_collision = true
 
-[node name="WallLeft" type="MeshInstance3D" parent="."]
+[node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 9.49386, 0, 0, 0, 0.266045, -0.0106361, 5.60184, -5.15279)
-mesh = SubResource("BoxMesh_nd34l")
+use_collision = true
 
-[node name="WallRight" type="MeshInstance3D" parent="."]
-transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, -0.0867567, 5.65043, 5.08582)
-mesh = SubResource("BoxMesh_nd34l")
+[node name="WallRight" type="CSGBox3D" parent="."]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.95832, 5.63414, 5.08551)
+use_collision = true
 
-[node name="WallBack" type="MeshInstance3D" parent="."]
+[node name="WallBack" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-07, 0, -0.266045, 0, 9.49386, 0, 10, 0, -1.16292e-08, -5.14368, 5.65043, -0.00750303)
-mesh = SubResource("BoxMesh_nd34l")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.00436296, -0.321522, 0.946892, 0.00148145, 0.946902, 0.321519, -0.999989, -1.72713e-10, 0.00460762, 11.9226, 8.22451, 0)
+use_collision = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0315199, -0.213747, 0.97638, -0.00689666, 0.976889, 0.213635, -0.999479, 0, -0.0322656, 13.3562, 7.44499, 0)
+transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, 1.30453e-08, -0.0322656, 13.3562, 19.5897, 0)
+
+[node name="WallLeft2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 4.91649, 5.60184, -10.0815)
+use_collision = true
+
+[node name="Player" parent="." instance=ExtResource("1_p1pp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73375, 4.21921, 0.0133736)
