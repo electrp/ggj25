@@ -5,7 +5,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_kqw4f"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
