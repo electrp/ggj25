@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://blm7dp6hmnlo3"]
+[gd_scene load_steps=6 format=3 uid="uid://b5logkqgxqaun"]
 
-[ext_resource type="Script" path="res://TestScene.gd" id="1_7sy4c"]
-[ext_resource type="Script" path="res://Player.gd" id="1_xmo05"]
+[ext_resource type="Script" path="res://source/Player.gd" id="1_7qmpx"]
+[ext_resource type="Script" path="res://source/CharacterBody.gd" id="2_v3qta"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
@@ -12,10 +12,10 @@ subpixel_positioning = 0
 
 [node name="Player" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
-script = ExtResource("1_7sy4c")
+script = ExtResource("1_7qmpx")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_xmo05")
+script = ExtResource("2_v3qta")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_ijbdt")
