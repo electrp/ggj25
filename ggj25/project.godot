@@ -29,6 +29,7 @@ window/name="BUBBLEFALL"
 
 pushable=""
 poppable=""
+bubble=""
 
 [input]
 
