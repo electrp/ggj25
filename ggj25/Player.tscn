@@ -28,10 +28,9 @@ shape = SubResource("CapsuleShape3D_5qq5j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Fan" parent="CharacterBody3D" instance=ExtResource("3_t7ex3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
 
 [node name="Pause" type="CanvasLayer" parent="."]
 visible = false
