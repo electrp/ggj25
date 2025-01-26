@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 		
 
 
-func triggered() -> void:
+func trigger() -> void:
 	print("button");
