@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://py3np05q8t3n"]
 
 [ext_resource type="Script" path="res://scripts/MovingBlock.tres.gd" id="1_jbusw"]
-[ext_resource type="Material" uid="uid://6kepflqs7xkl" path="res://assets/materials/mat_BoilerCeiling.tres" id="2_83ysq"]
+[ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="2_83ysq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qmt7k"]
 size = Vector3(1.92715, 5.00887, 0.13552)

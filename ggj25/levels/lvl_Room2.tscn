@@ -4,9 +4,9 @@
 [ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="2_gffk1"]
 [ext_resource type="Material" uid="uid://bglg5a4gy00pv" path="res://assets/materials/mat_Wall.tres" id="3_kr63e"]
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="4_eowoj"]
-[ext_resource type="PackedScene" path="res://prefabs/pf_MovingBlock.tscn" id="5_nqnky"]
+[ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="5_nqnky"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="5_w5vv4"]
-[ext_resource type="PackedScene" path="res://prefabs/pf_RaceWall.tscn" id="7_em31y"]
+[ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="7_em31y"]
 [ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="9_x63ci"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="11_hp051"]
 

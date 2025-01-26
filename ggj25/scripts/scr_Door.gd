@@ -43,3 +43,8 @@ func _on_bubble_button_triggered() -> void:
 
 func _on_bubble_button_2_triggered() -> void:
 	pass # Replace with function body.
+
+
+func _on_bubble_button_3_triggered() -> void:
+	open = true
+	pass # Replace with function body.

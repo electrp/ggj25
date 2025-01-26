@@ -216,7 +216,11 @@ size = Vector3(0.180817, 0.523438, 1)
 
 [node name="PfDoorVent" parent="." instance=ExtResource("8_dvc8f")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -6.04176, 4.89184, -1.62407)
-falloff = true
+
+[node name="PfDoor3" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(-1.19385e-07, 6.31112, -1.41325e-10, -0.910003, -8.27236e-07, -0.00323314, -0.0332092, -2.01213e-08, 0.0885947, -3.13445, 2.86241, -9.66931)
+door_end = Vector3(-180, 0, 0)
 
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="PfDoor2" method="_open_handler"]
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor" method="_open_handler"]
+[connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor3" method="_on_bubble_button_3_triggered"]

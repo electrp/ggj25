@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmmw62gvubinn"]
 
-[ext_resource type="Material" uid="uid://6kepflqs7xkl" path="res://assets/materials/mat_BoilerCeiling.tres" id="1_m3xjm"]
+[ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="1_m3xjm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8w8ab"]
-size = Vector3(4.30469, 11.0029, 1)
+size = Vector3(4.13904, 4.43167, 0.133057)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rbacm"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -15,7 +15,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.12, -0.0224609, 0.0295715, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0135372, -1.43363, 0.0103059)
 shape = SubResource("BoxShape3D_8w8ab")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
