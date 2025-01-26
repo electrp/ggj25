@@ -46,7 +46,7 @@ func _on_body_entered(body: Node) -> void:
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(linear_velocity * delta,false, 0.001, false, 2)
 	if collision:
-		if (!collision.get_collider() as Node3D).is_in_group(\"unpoppable\") :
+		if !(collision.get_collider() as Node3D).is_in_group(\"unpoppable\") :
 			self.queue_free()
 		if (collision.get_collider() as Node3D).is_in_group(\"BubbleButton\"):
 			collision.get_collider().trigger()
