@@ -1,4 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://ci28d6smjuwor"]
 
 [resource]
-volumetric_fog_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_density = 1.0
+fog_depth_curve = 1.86607
