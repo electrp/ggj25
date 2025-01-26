@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
 [ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="16_irywk"]
 [ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="17_q5fay"]
-[ext_resource type="Material" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
+[ext_resource type="Material" uid="uid://wxviad6my54a" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="19_0of8b"]
-[ext_resource type="Material" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
+[ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_txtqo")

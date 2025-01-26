@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[node name="Node3D3" type="Node3D"]
+[node name="Node3D4" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
