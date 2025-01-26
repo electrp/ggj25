@@ -43,7 +43,7 @@ func _on_node_3d_bubble_entered() -> void:
 render_priority = 0
 shader = ExtResource("11_oxb8k")
 
-[node name="Node3D2" type="Node3D"]
+[node name="Node3D3" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]

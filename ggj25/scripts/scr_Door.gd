@@ -32,3 +32,7 @@ func _open_handler() -> void:
 
 func _on_bubble_button_triggered() -> void:
 	pass # Replace with function body.
+
+
+func _on_bubble_button_2_triggered() -> void:
+	pass # Replace with function body.
