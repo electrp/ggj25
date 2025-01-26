@@ -6,8 +6,6 @@
 resource_name = "bubble"
 script/source = "extends RigidBody3D
 
-signal bubble_entered
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -18,9 +16,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node) -> void:
+	if(body.name == \"BubbleButton\"):
+		body.trigger()
 	if(body.is_in_group(\"poppable\")):
-		if(body.name == \"BubbleButton\"):
-			bubble_entered.emit()
 		print(\"bubble popped on \", body.name)
 		self.queue_free();
 		pass # Replace with function body.
