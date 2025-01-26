@@ -6,7 +6,7 @@ void vertex() {
 
 void fragment() {
 	ALPHA = .3;
-	ALBEDO = vec3(1, 0, 0);
+	ALBEDO = vec3(0, .35, .65);
 	// Called for every pixel the material is visible on.
 }
 

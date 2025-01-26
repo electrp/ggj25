@@ -11,6 +11,7 @@ func _ready() -> void:
 	pause.visible = false
 	pause.get_node("ContControl/Continue").connect("pressed", _continue)
 	pause.get_node("ExitControl/Exit").connect("pressed", _quit)
+	pause.get_node("RestControl/Restart").connect("pressed", _restart)
 
 func _continue():
 	if isPaused == true:
@@ -21,6 +22,15 @@ func _continue():
 
 func _quit():
 	get_tree().quit()
+	
+func _restart():
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		pause.visible = false
+		get_tree().paused = false
+		isPaused = false
+		get_tree().reload_current_scene()
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
