@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blp4ky1vg6all" path="res://assets/materials/models/grate.fbx" id="5_d6it0"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="5_upi7x"]
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="6_6pof4"]
-[ext_resource type="PackedScene" path="res://prefabs/pf_BubbleButton.tscn" id="10_ou4ee"]
+[ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_ou4ee"]
 [ext_resource type="Shader" path="res://assets/shaders/pf_Vent.gdshader" id="11_oxb8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]

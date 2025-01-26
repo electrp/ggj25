@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5logkqgxqaun"]
+[gd_scene load_steps=8 format=3 uid="uid://b5logkqgxqaun"]
 
 [ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
 [ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
 [ext_resource type="Environment" uid="uid://c0q38xibq7hb0" path="res://assets/materials/env_Player.tres" id="3_4aogy"]
 [ext_resource type="PackedScene" uid="uid://cd4763redojxq" path="res://prefabs/pf_PortableFan.tscn" id="3_dev6a"]
+[ext_resource type="Material" uid="uid://ct3lje8apjv7l" path="res://assets/materials/mat_Fan.tres" id="4_tjxdt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
@@ -29,20 +30,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
 environment = ExtResource("3_4aogy")
-fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -1.93467e-07, -1, 0, 4.426, -4.37114e-08, 0, 0, -0.47324)
 collision_mask = 3
 
 [node name="FanModel" type="Node3D" parent="CharacterBody3D/Head"]
-transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.509374, -0.582478, -0.758498)
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.714386, -0.721479, -0.794597)
 
 [node name="Handle" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136642, 0.012306, -0.0119386)
+material_override = ExtResource("4_tjxdt")
 
 [node name="Blower" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
 transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0.0136642, 1.46638, -0.0119386)
+material_override = ExtResource("4_tjxdt")
 
 [node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0111599, -0.593747, 0.49353)
