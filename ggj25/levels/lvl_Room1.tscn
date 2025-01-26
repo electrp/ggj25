@@ -99,7 +99,7 @@ size = Vector3(0.861328, 1, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6873, 1.82582, -20.3866)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
-transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 44.456, 2.25, -21.736)
+transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 7.58166, 2.25, -21.156)
 
 [node name="WallLeft3" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 14.5768, 5.57578, -0.127202)
@@ -521,13 +521,10 @@ script = ExtResource("13_cvp0f")
 [node name="PfDoor" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(4.128, 1.00361e-07, 0, -3.60881e-07, 1.148, 0, 0, 0, 0.091, -3.34003, 2.35744, -19.1548)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
-door_end = Vector3(0, 90, 0)
 
 [node name="PfDoor3" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(5.578, 0, 0, 0, 1.307, 0, 0, 0, 0.226, -18.2463, 2.27, -35.128)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
 door_end = Vector3(0, -90, 0)
 
 [node name="grate4" parent="SubViewportContainer" instance=ExtResource("5_d6it0")]
@@ -539,8 +536,6 @@ transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.014632)
 [node name="PfDoor4" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(5.588, 0, 0, 0, 1.372, 0, 0, 0, 0.191, -12.3926, 2.265, -23.683)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
-door_end = Vector3(0, 90, 0)
 
 [node name="grate5" parent="SubViewportContainer" instance=ExtResource("5_d6it0")]
 transform = Transform3D(-1.69753e-06, -6.90202e-07, 1.349, 5.86392e-06, 7.895, 1.17933e-07, -38.835, 1.19211e-06, -5.89667e-08, -12.3926, 2.34994, -32.2032)
@@ -581,13 +576,10 @@ size = Vector3(0.0134413, 0.526703, 1)
 [node name="PfDoor5" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(2.66771e-07, 4.38693e-15, -0.149, 5.33541e-07, -1.148, 0, -6.103, -1.00361e-07, -6.513e-09, -23.59, 2.35744, -7.20711)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
-door_end = Vector3(0, 90, 0)
 
 [node name="PfDoor6" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(1.15311e-07, 1.49721e-14, 0.149, 2.30621e-07, -3.918, 0, 2.638, 3.42522e-07, -6.513e-09, -30.0854, 3.80426, -12.6135)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
 door_end = Vector3(0, -90, 0)
 
 [node name="WallRight48" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
@@ -608,7 +600,6 @@ size = Vector3(0.0232816, 0.526703, 1)
 [node name="PfDoor2" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(-3.85, 0, -1.37406e-08, 0, 1.148, 0, 5.81334e-07, 0, -0.091, 0.857011, 2.38637, -23.1737)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
 door_end = Vector3(0, 195, 0)
 
 [node name="WallRight51" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
@@ -640,8 +631,6 @@ size = Vector3(0.0295412, 0.218017, 1)
 [node name="PfDoor7" parent="SubViewportContainer" instance=ExtResource("6_6pof4")]
 transform = Transform3D(-1.67764e-07, 0, -0.191, 0, 1.372, 0, 3.838, 0, -8.34888e-09, -3.12587, 2.29393, -35.1177)
 script = SubResource("GDScript_a0aq6")
-door_time = 1.0
-door_end = Vector3(0, 90, 0)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
 
