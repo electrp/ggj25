@@ -433,10 +433,10 @@ use_collision = true
 size = Vector3(0.861328, 1, 1)
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_2lqyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.727, 1.82582, 11.878)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6829, 1.82582, 0.785926)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
-transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, -222.112, 2.25, 12.0494)
+transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 14.2979, 2.25, 0.957326)
 
 [node name="WallLeft3" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 14.5768, 5.57578, -0.127202)
@@ -1189,6 +1189,7 @@ curve = SubResource("Curve3D_6f4ak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.7
 
 [node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
 collision_layer = 2
@@ -1202,6 +1203,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 progress = 20.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.7
 
 [node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
 
@@ -1214,6 +1216,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
 progress = 10.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.7
 
 [node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
 
@@ -1222,6 +1225,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
 progress = 30.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.7
 
 [node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527134, 4.05276, -0.00727844)
@@ -1237,6 +1241,7 @@ curve = SubResource("Curve3D_6f4ak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.15
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
 
@@ -1245,6 +1250,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 progress = 20.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.15
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
 
@@ -1257,6 +1263,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
 progress = 10.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.15
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52013, 0)
@@ -1266,6 +1273,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
 progress = 30.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
+speed = 0.15
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55638, 0)
