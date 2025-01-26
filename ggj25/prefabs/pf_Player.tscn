@@ -19,7 +19,7 @@ script = ExtResource("2_v3qta")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_ijbdt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" groups=["poppable"]]
 shape = SubResource("CapsuleShape3D_5qq5j")
 
 [node name="Head" type="Node3D" parent="CharacterBody3D"]

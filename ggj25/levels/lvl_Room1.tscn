@@ -88,7 +88,7 @@ use_collision = true
 size = Vector3(0.861328, 1, 1)
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_2lqyt")]
-transform = Transform3D(0.999997, 0.00054823, 0.00234128, -0.000543907, 0.999998, -0.00185548, -0.00234229, 0.00185421, 0.999996, 3.09027, 1.82582, 0.0133736)
+transform = Transform3D(0.999997, 0.00054823, 0.00234128, -0.000543907, 0.999998, -0.00185548, -0.00234229, 0.00185421, 0.999996, 3.12401, 1.82582, -19.1229)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
 transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 14.4437, 2.25992, 0.852121)
@@ -351,8 +351,11 @@ size = Vector3(0.00488867, 0.536621, 1)
 [node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
 
 [node name="Fan" parent="." instance=ExtResource("3_43o8t")]
-transform = Transform3D(-3.17103e-07, 0, 12.3662, 0, 4.15205, 0, -7.25447, 0, -5.40542e-07, 10.0805, 3.10317, -21.3192)
+transform = Transform3D(-3.17103e-07, 0, 13.4737, 0, 4.15205, 0, -7.25447, 0, -5.88955e-07, 10.0785, 3.12673, -21.3616)
 power = 0.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0130407, 0.914685, -0.403958, -0.0295129, 0.404168, 0.914209, 0.999479, 1.19209e-07, 0.0322656, 8.97144, 19.5897, 0)
 
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
