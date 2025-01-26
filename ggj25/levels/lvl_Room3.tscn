@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv2bh8g054osy"]
+
+[ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_s1d1y"]
+[ext_resource type="Material" uid="uid://wxviad6my54a" path="res://assets/materials/mat_BoilerFloor.tres" id="2_tk2n7"]
+[ext_resource type="Material" uid="uid://c8jvh83njukgj" path="res://assets/materials/mat_BoilerCeiling.tres" id="3_0jj2g"]
+[ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="3_sowyy"]
+[ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="4_172s7"]
+[ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="4_dlcy4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3528r"]
+shader = ExtResource("1_s1d1y")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="NickTestScene" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_3528r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 83.1503, 0.0848904, -0.00707483, -31.3651)
+material_override = ExtResource("2_tk2n7")
+use_collision = true
+material = ExtResource("2_tk2n7")
+
+[node name="ceiling" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 83.1503, 0.0874157, 5.78817, -31.4841)
+material_override = ExtResource("3_0jj2g")
+use_collision = true
+material = ExtResource("2_tk2n7")
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_sowyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0430599, 1.49257, 0.47632)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, 0)
+light_color = Color(0.7, 0.291667, 0, 1)
+spot_range = 6.22286
+spot_attenuation = -1.0
+spot_angle = 35.0007
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -12.3589)
+light_color = Color(0.7, 0.291667, 0, 1)
+spot_range = 6.22286
+spot_attenuation = -1.0
+spot_angle = 35.0007
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -21.3003)
+light_color = Color(0.7, 0.291667, 0, 1)
+spot_range = 6.22286
+spot_attenuation = -1.0
+spot_angle = 35.0007
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -30.345)
+light_color = Color(0.7, 0.291667, 0, 1)
+spot_range = 6.22286
+spot_attenuation = -1.0
+spot_angle = 35.0007
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -42.3494)
+light_color = Color(0.7, 0.291667, 0, 1)
+spot_range = 6.22286
+spot_attenuation = -1.0
+spot_angle = 35.0007
+
+[node name="wall" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, 3, 2.88377, -41.9316)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 1, 0.758087)
+
+[node name="wall7" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 19.5675, 10.2675, 2.89336, -0.0488375)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 1.00403, 1.00769)
+
+[node name="wall2" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -10, 2.88377, -31.7935)
+material_override = ExtResource("4_172s7")
+use_collision = true
+
+[node name="wall3" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1.74846e-08, 0, -20.16, 0, 4.76, 0, 0.4, 0, -8.81221e-07, 0, 2.88377, 10)
+material_override = ExtResource("4_172s7")
+use_collision = true
+
+[node name="wall4" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1.74846e-08, 0, -8.064, 0, 4.76, 0, 0.4, 0, -3.52489e-07, -6, 2.88377, -10)
+material_override = ExtResource("4_172s7")
+use_collision = true
+
+[node name="wall5" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1.74846e-08, 0, -8.064, 0, 4.76, 0, 0.4, 0, -3.52489e-07, 6.02953, 2.88377, -10)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 1, 1.00732)
+
+[node name="wall6" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1.74836e-08, 0, -3.96612, 0, 0.822481, 0, 0.399977, 0, -1.73365e-07, 0.00594878, 4.85146, -10.0043)
+material_override = ExtResource("4_172s7")
+use_collision = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_dlcy4")]
