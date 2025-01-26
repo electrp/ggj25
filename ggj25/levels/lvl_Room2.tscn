@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3bggev6qbl5r"]
+[gd_scene load_steps=12 format=3 uid="uid://d3bggev6qbl5r"]
 
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_b66xp"]
 [ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="2_gffk1"]
 [ext_resource type="Material" uid="uid://bglg5a4gy00pv" path="res://assets/materials/mat_Wall.tres" id="3_kr63e"]
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="4_eowoj"]
+[ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="5_nqnky"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="5_w5vv4"]
+[ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="7_em31y"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="11_hp051"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
@@ -14,12 +16,17 @@ shader_parameter/dithering = true
 shader_parameter/colors = 12
 shader_parameter/dither_size = 1
 
-[sub_resource type="GDScript" id="GDScript_v1rev"]
-script/source = "extends RigidBody3D
+[sub_resource type="Curve3D" id="Curve3D_8oqex"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, 0, 0, -7, 0, -30),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
-@export var power: float
-@export var angular_const: Vector3
-var time = 0.0;
+[sub_resource type="GDScript" id="GDScript_gve38"]
+script/source = "extends PathFollow3D
+
+@export var speed: float = .2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,17 +34,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	time += delta
-	self.linear_velocity.x = power * sin(time)
-	self.angular_velocity = angular_const
+func _process(delta: float) -> void:
+	progress_ratio += delta * speed
 	pass
 "
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qmt7k"]
-size = Vector3(1.92715, 5.00887, 0.309748)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ueh2b"]
 
 [node name="Node3D2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
@@ -60,9 +60,10 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, 1.3651, 0.354833, 0.112576)
+transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, 1.3651, 0.354833, -35.5917)
 material_override = ExtResource("2_gffk1")
 use_collision = true
+size = Vector3(1, 1, 1.71338)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, -3.72199e-08, -0.0322656, 13.3562, 19.5897, 0)
@@ -73,190 +74,430 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97888, 1.82582, 7.42384)
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_w5vv4")]
 transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 2.06942, 2.25992, 6.07424)
 
-[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.28138, 0)
+[node name="Doors" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="SubViewportContainer/SubViewport/Node3D" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.976417, 0)
+[node name="MovingBlock" parent="SubViewportContainer/SubViewport/Doors" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04263, 3.49904, 0)
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
-angular_const = Vector3(0, 0.3, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/RigidBody3D"]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="Node3D2" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94917, 4.20029, 0)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="SubViewportContainer/SubViewport/Node3D2" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971911, -0.898945, 0)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
 angular_const = Vector3(0, -0.3, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D2/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D2/RigidBody3D" groups=["poppable"]]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="Node3D3" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94917, 4.20029, -4.68296)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="SubViewportContainer/SubViewport/Node3D3" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971911, -0.898945, 0)
+[node name="MovingBlock2" parent="SubViewportContainer/SubViewport/Doors" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50809, 0)
+axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 axis_lock_angular_x = true
-axis_lock_angular_y = true
 axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
-power = 1.0
+angular_const = Vector3(0, 0.3, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D3/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D3/RigidBody3D" groups=["poppable"]]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="Node3D4" type="Node3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115666, 4.20029, -4.68296)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="SubViewportContainer/SubViewport/Node3D4" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971911, -0.898945, 0)
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
-power = -1.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D4/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D4/RigidBody3D" groups=["poppable"]]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="WallRight4" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.16653, 3.40086, -1.70737)
+[node name="WallRight4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19644, 3.42979, -1.71228)
 material_override = ExtResource("3_kr63e")
 use_collision = true
 size = Vector3(0.178375, 0.523438, 1)
 
-[node name="WallRight5" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.24104, 3.40086, -1.74133)
+[node name="WallRight5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.21113, 3.42979, -1.74624)
 material_override = ExtResource("3_kr63e")
 use_collision = true
 size = Vector3(0.180817, 0.523438, 1)
 
-[node name="WallRight6" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.22725, 3.40086, -5.4076)
+[node name="Node3D3" type="Node3D" parent="SubViewportContainer/SubViewport/Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.18941)
+
+[node name="MovingBlock3" parent="SubViewportContainer/SubViewport/Doors/Node3D3" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000977384, 0, -0.000977384, 1, 0, 3.54357, -4.68528)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+linear_speed = 1.5
+
+[node name="MovingBlock4" parent="SubViewportContainer/SubViewport/Doors/Node3D3" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05474, 3.53702, -4.70017)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+linear_speed = 1.5
+
+[node name="MovingBlock5" parent="SubViewportContainer/SubViewport/Doors/Node3D3" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+linear_speed = 1.5
+
+[node name="MovingBlock6" parent="SubViewportContainer/SubViewport/Doors/Node3D3" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0266, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+linear_speed = 1.5
+
+[node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.19734, 3.42979, -5.41251)
 material_override = ExtResource("3_kr63e")
 use_collision = true
 size = Vector3(0.104798, 0.523438, 1)
 
+[node name="WallRight7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33067, 3.44396, -5.40461)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19644, 3.42979, -6.47101)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.21113, 3.42979, -6.57329)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.1938, 3.42979, -9.0629)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33421, 3.44396, -9.055)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19998, 3.42979, -10.1214)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D3" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.20759, 3.42979, -10.2237)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="Node3D4" type="Node3D" parent="SubViewportContainer/SubViewport/Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -14.4288)
+
+[node name="MovingBlock3" parent="SubViewportContainer/SubViewport/Doors/Node3D4" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000977384, 0, -0.000977384, 1, 0, 3.54357, -4.68528)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+linear_speed = 2.0
+
+[node name="MovingBlock4" parent="SubViewportContainer/SubViewport/Doors/Node3D4" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05474, 3.53702, -4.70017)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+linear_speed = 2.0
+
+[node name="MovingBlock5" parent="SubViewportContainer/SubViewport/Doors/Node3D4" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+linear_speed = 2.0
+
+[node name="MovingBlock6" parent="SubViewportContainer/SubViewport/Doors/Node3D4" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0266, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+linear_speed = 2.0
+
+[node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.19734, 3.42979, -5.41251)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33067, 3.44396, -5.40461)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19644, 3.42979, -6.47101)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.21113, 3.42979, -6.57329)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.1938, 3.42979, -9.0629)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33421, 3.44396, -9.055)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19998, 3.42979, -10.1214)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D4" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.20759, 3.42979, -10.2237)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="Node3D2" type="Node3D" parent="SubViewportContainer/SubViewport/Doors"]
+
+[node name="MovingBlock3" parent="SubViewportContainer/SubViewport/Doors/Node3D2" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000977384, 0, -0.000977384, 1, 0, 3.54357, -4.68528)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+
+[node name="MovingBlock4" parent="SubViewportContainer/SubViewport/Doors/Node3D2" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1.00296, 0, 0, 0, 1.00296, 0, 0, 0, 1.00296, 2.05474, 3.53702, -4.70017)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+
+[node name="MovingBlock5" parent="SubViewportContainer/SubViewport/Doors/Node3D2" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(1, 0, 0)
+
+[node name="MovingBlock6" parent="SubViewportContainer/SubViewport/Doors/Node3D2" instance=ExtResource("5_nqnky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0266, 3.53702, -8.35617)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_const = Vector3(-1, 0, 0)
+
+[node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.19734, 3.42979, -5.41251)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33067, 3.44396, -5.40461)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19644, 3.42979, -6.47101)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.21113, 3.42979, -6.57329)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.1938, 3.42979, -9.0629)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.33421, 3.44396, -9.055)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="WallRight12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.19998, 3.42979, -10.1214)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.102844, 0.523438, 1)
+
+[node name="WallRight13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Doors/Node3D2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.20759, 3.42979, -10.2237)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(0.104798, 0.523438, 1)
+
+[node name="Race" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.82012, 2.61769, -63.5058)
+
+[node name="Path3D" type="Path3D" parent="SubViewportContainer/SubViewport/Race"]
+curve = SubResource("Curve3D_8oqex")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.05
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race/Path3D/PathFollow3D" instance=ExtResource("7_em31y")]
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+progress = 20.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.05
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race/Path3D/PathFollow3D2" instance=ExtResource("7_em31y")]
+
+[node name="Path3D2" type="Path3D" parent="SubViewportContainer/SubViewport/Race"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71343, 0.0905867, -0.00490856)
+curve = SubResource("Curve3D_8oqex")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race/Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
+progress = 10.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.05
+
+[node name="AnimatableBody3D2" parent="SubViewportContainer/SubViewport/Race/Path3D2/PathFollow3D" instance=ExtResource("7_em31y")]
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race/Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
+progress = 30.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.05
+
+[node name="AnimatableBody3D2" parent="SubViewportContainer/SubViewport/Race/Path3D2/PathFollow3D2" instance=ExtResource("7_em31y")]
+
+[node name="WallRight5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Race" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 7.87962, 2.88073, -21.8426)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(1.49049, 0.953125, 1)
+
+[node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Race" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -2.51008, 2.76252, -21.1159)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(1.43824, 0.928223, 1)
+
+[node name="Race2" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.82011, 2.61769, -104.907)
+
+[node name="Path3D" type="Path3D" parent="SubViewportContainer/SubViewport/Race2"]
+curve = SubResource("Curve3D_8oqex")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race2/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.1
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race2/Path3D/PathFollow3D" instance=ExtResource("7_em31y")]
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race2/Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+progress = 20.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.1
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race2/Path3D/PathFollow3D2" instance=ExtResource("7_em31y")]
+
+[node name="Path3D2" type="Path3D" parent="SubViewportContainer/SubViewport/Race2"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71343, 0.0905867, -0.00490856)
+curve = SubResource("Curve3D_8oqex")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race2/Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
+progress = 10.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.1
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race2/Path3D2/PathFollow3D" instance=ExtResource("7_em31y")]
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewportContainer/SubViewport/Race2/Path3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
+progress = 30.0
+rotation_mode = 0
+script = SubResource("GDScript_gve38")
+speed = 0.1
+
+[node name="AnimatableBody3D" parent="SubViewportContainer/SubViewport/Race2/Path3D2/PathFollow3D2" instance=ExtResource("7_em31y")]
+
+[node name="WallRight5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Race2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 7.87962, 2.88073, -14.4285)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(2.12903, 0.953125, 1)
+
+[node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Race2" groups=["poppable"]]
+transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -2.51008, 2.76252, -14.78)
+material_override = ExtResource("3_kr63e")
+use_collision = true
+size = Vector3(2.05689, 0.928223, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("11_hp051")]
+
 [node name="WallRight7" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.30076, 3.41503, -5.3997)
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 5.03762, 3.44396, -3.43821)
 material_override = ExtResource("3_kr63e")
 use_collision = true
 size = Vector3(0.104798, 0.523438, 1)
 
 [node name="WallRight8" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.16653, 3.40086, -6.4661)
-material_override = ExtResource("3_kr63e")
-use_collision = true
-size = Vector3(0.102844, 0.523438, 1)
-
-[node name="WallRight9" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.24104, 3.40086, -6.56838)
-material_override = ExtResource("3_kr63e")
-use_collision = true
-size = Vector3(0.104798, 0.523438, 1)
-
-[node name="PauseMenu" parent="." instance=ExtResource("11_hp051")]
-
-[node name="Node3D3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94917, 4.20029, -8.36081)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Node3D3" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971911, -0.898945, 0)
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
-power = -1.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D3/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D3/RigidBody3D" groups=["poppable"]]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="Node3D4" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115666, 4.20029, -8.36081)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Node3D4" groups=["poppable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971911, -0.898945, 0)
-axis_lock_linear_y = true
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-gravity_scale = 0.0
-script = SubResource("GDScript_v1rev")
-power = 1.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D4/RigidBody3D"]
-shape = SubResource("BoxShape3D_qmt7k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D4/RigidBody3D" groups=["poppable"]]
-transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.309748, 0, 0, 0)
-mesh = SubResource("BoxMesh_ueh2b")
-
-[node name="WallRight10" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -3.22371, 3.40086, -9.05799)
-material_override = ExtResource("3_kr63e")
-use_collision = true
-size = Vector3(0.104798, 0.523438, 1)
-
-[node name="WallRight11" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 5.3043, 3.41503, -9.05009)
-material_override = ExtResource("3_kr63e")
-use_collision = true
-size = Vector3(0.104798, 0.523438, 1)
-
-[node name="WallRight12" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, 3.17007, 3.40086, -10.1165)
-material_override = ExtResource("3_kr63e")
-use_collision = true
-size = Vector3(0.102844, 0.523438, 1)
-
-[node name="WallRight13" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -1.2375, 3.40086, -10.2188)
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -3.07042, 3.44396, -3.43821)
 material_override = ExtResource("3_kr63e")
 use_collision = true
 size = Vector3(0.104798, 0.523438, 1)

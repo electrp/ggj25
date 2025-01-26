@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://py3np05q8t3n"]
+
+[ext_resource type="Script" path="res://scripts/MovingBlock.tres.gd" id="1_jbusw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmt7k"]
+size = Vector3(1.92715, 5.00887, 0.309748)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxknl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ueh2b"]
+material = SubResource("StandardMaterial3D_xxknl")
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["poppable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.976417, 0)
+gravity_scale = 0.0
+script = ExtResource("1_jbusw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.02101, 0, 0, 0, 1.02101, 0, 0, 0, 0.402541, 0, 0, 0)
+shape = SubResource("BoxShape3D_qmt7k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.92715, 0, 0, 0, 5.00887, 0, 0, 0, 0.119511, 0, 0, 0)
+mesh = SubResource("BoxMesh_ueh2b")
+
+[node name="MovingBlock" type="Node3D" parent="."]
