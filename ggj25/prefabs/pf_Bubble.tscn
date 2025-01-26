@@ -33,17 +33,20 @@ func _process(delta: float) -> void:
 		sprite.scale = TARGET_SPRITE_SCALE
 
 func _on_body_entered(body: Node) -> void:
+	if(body.name == \"BubbleButton\"):
+		body.trigger()
 	if(body.is_in_group(\"poppable\")):
-		if(body.name == \"BubbleButton\"):
-			bubble_entered.emit()
 		print(\"bubble popped on \", body.name)
 		self.queue_free();
 		pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(linear_velocity * delta)
-	if bubble_entered and collision:
-		linear_velocity = linear_velocity.bounce(collision.get_normal())
+	var collision = move_and_collide(linear_velocity * delta,false, 0.001, false, 4)
+	if collision:
+		if !(collision.get_collider() as Node3D).is_in_group(\"poppable\") :
+			linear_velocity = linear_velocity.bounce(collision.get_normal())
+		else:
+			self.queue_free()
 		
 "
 
