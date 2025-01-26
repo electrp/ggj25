@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="2_83ysq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qmt7k"]
-size = Vector3(1.92715, 5.00887, 0.13552)
+size = Vector3(1.92715, 3.69033, 0.13552)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ueh2b"]
 material = ExtResource("2_83ysq")
@@ -15,7 +15,7 @@ gravity_scale = 0.0
 script = ExtResource("1_jbusw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00545985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0991719, 0.00545985)
 shape = SubResource("BoxShape3D_qmt7k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
