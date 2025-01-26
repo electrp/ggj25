@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv2bh8g054osy"]
+[gd_scene load_steps=10 format=3 uid="uid://cv2bh8g054osy"]
 
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_s1d1y"]
 [ext_resource type="Material" uid="uid://wxviad6my54a" path="res://assets/materials/mat_BoilerFloor.tres" id="2_tk2n7"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="3_sowyy"]
 [ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="4_172s7"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="4_dlcy4"]
+[ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="7_tonfx"]
+[ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="8_bjdso"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3528r"]
 shader = ExtResource("1_s1d1y")
@@ -100,6 +102,24 @@ transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -10, 2.88377, -31.
 material_override = ExtResource("4_172s7")
 use_collision = true
 
+[node name="wall8" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 1.00726, -41.9226)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 0.211548, 0.758301)
+
+[node name="wall9" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 4.69639, -41.9226)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 0.290527, 0.758301)
+
+[node name="wall10" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 2.72163, -43.3857)
+material_override = ExtResource("4_172s7")
+use_collision = true
+size = Vector3(1, 0.553162, 0.723389)
+
 [node name="wall3" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-1.74846e-08, 0, -20.16, 0, 4.76, 0, 0.4, 0, -8.81221e-07, 0, 2.88377, 10)
 material_override = ExtResource("4_172s7")
@@ -122,3 +142,10 @@ material_override = ExtResource("4_172s7")
 use_collision = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_dlcy4")]
+
+[node name="Fan" parent="." instance=ExtResource("7_tonfx")]
+transform = Transform3D(-0.999987, 0, 0.00504387, 0, 1, 0, -0.00504387, 0, -0.999987, -7.89823, 2.57931, -10.3531)
+power = 2.0
+
+[node name="BubbleSpawner" parent="." instance=ExtResource("8_bjdso")]
+transform = Transform3D(1, 0, 0, 0, 8.54195e-05, -0.999999, 0, 0.0889834, 0.000959949, 3.811, 2, -9.8)
