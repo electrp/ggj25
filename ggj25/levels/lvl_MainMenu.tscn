@@ -8,21 +8,40 @@
 
 [node name="MainMenu" type="Node2D"]
 
-[node name="Play" type="Sprite2D" parent="."]
-position = Vector2(169.543, 289.375)
-scale = Vector2(0.412079, 0.412079)
+[node name="Main" type="CanvasLayer" parent="."]
+
+[node name="TitleControl" type="Control" parent="Main"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Sprite2D" parent="Main/TitleControl"]
+texture = ExtResource("5_v1cl2")
+
+[node name="PlayControl" type="Control" parent="Main"]
+layout_mode = 3
+anchor_left = 0.3
+anchor_top = 0.8
+anchor_right = 0.3
+anchor_bottom = 0.8
+scale = Vector2(0.5, 0.5)
+
+[node name="Play" type="Sprite2D" parent="Main/PlayControl"]
 texture = ExtResource("1_3rk0f")
 script = ExtResource("2_j8ran")
 
-[node name="Quit" type="Sprite2D" parent="."]
-position = Vector2(443.464, 287.313)
-scale = Vector2(0.405581, 0.405581)
+[node name="QuitControl" type="Control" parent="Main"]
+layout_mode = 3
+anchor_left = 0.7
+anchor_top = 0.8
+anchor_right = 0.7
+anchor_bottom = 0.8
+scale = Vector2(0.5, 0.5)
+
+[node name="Quit" type="Sprite2D" parent="Main/QuitControl"]
 texture = ExtResource("3_21vuf")
 script = ExtResource("4_cgt0l")
-
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(314, 117)
-scale = Vector2(0.638379, 0.638379)
-texture = ExtResource("5_v1cl2")
-
-[node name="SubViewport" type="SubViewport" parent="."]
