@@ -16,7 +16,6 @@ uv1_world_triplanar = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00707412, 0, 0.000481844)
 script = ExtResource("1_yugjp")
 door_time = 1.0
-open = true
 door_end = Vector3(0, 90, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

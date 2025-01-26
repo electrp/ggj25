@@ -1260,7 +1260,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 progress = 20.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
@@ -1282,7 +1282,7 @@ speed = 0.08
 [node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -23.0001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
 progress = 30.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
