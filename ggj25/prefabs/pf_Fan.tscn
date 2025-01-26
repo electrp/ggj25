@@ -17,7 +17,6 @@ var falloff_scale: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	pass # Replace with function body.
 	
 	
@@ -58,6 +57,9 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 [sub_resource type="BoxShape3D" id="BoxShape3D_bcesa"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4cnlc"]
+emission_shape_offset = Vector3(0, 0, -4)
+emission_shape = 3
+emission_box_extents = Vector3(3, 3, 1)
 direction = Vector3(0, 0, 3)
 spread = 3.5
 initial_velocity_min = 20.0
@@ -65,8 +67,9 @@ initial_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 10.0
 linear_accel_max = 25.0
-turbulence_noise_strength = 18.08
+turbulence_noise_strength = 0.0
 turbulence_noise_scale = 1.0
+collision_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eock0"]
 transparency = 1
@@ -98,8 +101,12 @@ shape = SubResource("BoxShape3D_bcesa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 gizmo_extents = 0.29
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.766106)
+size = Vector3(2, 2, 0.547854)
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1056, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0.00525093, 1.63913e-07, 0.49922)
 amount = 50
 lifetime = 2.0
 speed_scale = 0.6
