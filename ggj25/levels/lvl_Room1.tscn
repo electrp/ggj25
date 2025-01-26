@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=13 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://blp4ky1vg6all" path="res://assets/materials/models/grate.fbx" id="5_d6it0"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="5_upi7x"]
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="6_6pof4"]
-[ext_resource type="PackedScene" uid="uid://1anltr3fenvl" path="res://prefabs/pf_Button.tscn" id="11_0koqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_txtqo")
@@ -278,9 +277,6 @@ size = Vector3(0.001, 0.536621, 1)
 transform = Transform3D(-68.8635, 0, -0.257118, 0, 9.49386, 0, 259.081, 0, -0.0683416, 40.9731, 3.32834, -6.97478)
 use_collision = true
 size = Vector3(0.0436518, 0.536621, 1)
-
-[node name="PfInteractable" parent="SubViewportContainer/SubViewport" instance=ExtResource("11_0koqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.441, 2.93227, -14.4989)
 
 [node name="WallRight19" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(124.265, 0, -0.235736, 0, 9.49386, 0, 237.536, 0, 0.123324, 41.1481, 3.32834, -15.0868)
