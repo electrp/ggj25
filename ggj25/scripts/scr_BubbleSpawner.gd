@@ -9,7 +9,6 @@ var canShoot = true
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (spawned_bubble == null) and canShoot == true:

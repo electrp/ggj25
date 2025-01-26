@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ijnb2538qm8n"]
+[gd_scene load_steps=14 format=3 uid="uid://ijnb2538qm8n"]
 
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_0v8sg"]
 [ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="2_jxg3y"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="9_m6ncy"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="10_7ruml"]
 [ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_vhd0l"]
-[ext_resource type="PackedScene" uid="uid://b6wx652uxyous" path="res://prefabs/pf_FanDown.tscn" id="13_2kjrw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_0v8sg")
@@ -222,9 +221,19 @@ transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -6.04176
 transform = Transform3D(-1.19385e-07, 6.31112, -1.41325e-10, -0.910003, -8.27236e-07, -0.00323314, -0.0332092, -2.01213e-08, 0.0885947, -3.13445, 2.86241, -9.66931)
 door_end = Vector3(-180, 0, 0)
 
-[node name="Fan" parent="." instance=ExtResource("13_2kjrw")]
+[node name="Fan" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 transform = Transform3D(1, 0, 0, 0, 0.0104543, -0.999945, 0, 0.999945, 0.0104543, -3.10914, 2.61959, 5.63239)
 power = 2.0
+script = null
 
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="PfDoor2" method="_open_handler"]
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor" method="_open_handler"]
