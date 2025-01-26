@@ -2,14 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
 [ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
+[ext_resource type="Environment" uid="uid://ci28d6smjuwor" path="res://assets/materials/env_Player.tres" id="3_4aogy"]
 [ext_resource type="PackedScene" uid="uid://cd4763redojxq" path="res://prefabs/pf_PortableFan.tscn" id="3_dev6a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
-
-[sub_resource type="Environment" id="Environment_u23h3"]
-volumetric_fog_enabled = true
 
 [sub_resource type="FogMaterial" id="FogMaterial_0nncf"]
 density = 0.2
@@ -36,23 +34,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
 cull_mask = 1048573
-environment = SubResource("Environment_u23h3")
+environment = ExtResource("3_4aogy")
 fov = 90.0
 
 [node name="FogVolume" type="FogVolume" parent="CharacterBody3D/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0067358, 2.80016, -0.145672)
 shape = 4
 material = SubResource("FogMaterial_0nncf")
-
-[node name="FanModel" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.502638, -0.582478, -0.90417)
-
-[node name="Handle" type="CSGCylinder3D" parent="CharacterBody3D/Head/Camera3D/FanModel"]
-layers = 2
-
-[node name="Blower" type="CSGCylinder3D" parent="CharacterBody3D/Head/Camera3D/FanModel"]
-transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0, 1.45407, 0)
-layers = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterBody3D/Head/Camera3D"]
 anchors_preset = 15
@@ -68,8 +56,21 @@ size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
 [node name="ViewmodelCam" type="Camera3D" parent="CharacterBody3D/Head/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00908971, 0.75324, 0.161755)
 cull_mask = 1047554
+environment = ExtResource("3_4aogy")
 fov = 90.0
+
+[node name="FanModel" type="Node3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.509374, -0.582478, -0.758498)
+
+[node name="Handle" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136642, 0.012306, -0.0119386)
+layers = 2
+
+[node name="Blower" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
+transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0.0136642, 1.46638, -0.0119386)
+layers = 2
 
 [node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.91038e-11, 0, -0.673047)

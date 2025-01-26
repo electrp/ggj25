@@ -49,8 +49,6 @@ material = ExtResource("1_h2lje")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.523142, 2.9646, 0.479514)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 0.77533, 0.631556, 0, -0.631556, 0.77533, -0.177026, 6.90218, 0.090127)
-layers = 3
 
 [node name="wall" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(20, 0, 0, 0, 10, 0, 0, 0, 0.3, 0, 5, -10.15)
