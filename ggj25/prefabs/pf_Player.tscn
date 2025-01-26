@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" groups=["interactable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
 script = ExtResource("1_7qmpx")
 
@@ -29,6 +29,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
 environment = ExtResource("3_4aogy")
 fov = 90.0
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -1.93467e-07, -1, 0, 4.426, -4.37114e-08, 0, 0, -0.47324)
+collision_mask = 3
 
 [node name="FanModel" type="Node3D" parent="CharacterBody3D/Head"]
 transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.509374, -0.582478, -0.758498)

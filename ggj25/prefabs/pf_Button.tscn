@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://1anltr3fenvl"]
+
+[ext_resource type="Script" path="res://scripts/scr_interactable.gd" id="1_hb3gb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mark"]
+
+[node name="StaticBody3D" type="StaticBody3D" groups=["interactable"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_hb3gb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100725, 0)
+shape = SubResource("SphereShape3D_0mark")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0293307, 0, 0, 0, 1, 0, -0.128136, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.781738, 0, 0, 0, 0.781738, 0, 0, 0, 0.781738, 0, -0.25425, 0)
