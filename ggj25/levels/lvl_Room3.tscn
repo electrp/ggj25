@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://cv2bh8g054osy"]
 
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_s1d1y"]
-[ext_resource type="Material" uid="uid://wxviad6my54a" path="res://assets/materials/mat_BoilerFloor.tres" id="2_tk2n7"]
+[ext_resource type="Material" path="res://assets/materials/mat_BoilerFloor.tres" id="2_tk2n7"]
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="3_0jj2g"]
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="3_sowyy"]
-[ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="4_172s7"]
+[ext_resource type="Material" path="res://assets/materials/mat_BoilingWalls.tres" id="4_172s7"]
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="4_dlcy4"]
 [ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="7_tonfx"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="8_bjdso"]

@@ -15,5 +15,5 @@ func _physics_process(delta: float) -> void:
 		if(body.is_in_group("bubble")):
 			body.gravity = false
 			var rb = body as RigidBody3D
-			rb.gravity_scale = -.2
+			rb.gravity_scale = -.2	
 			

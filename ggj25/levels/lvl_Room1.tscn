@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=34 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -17,6 +17,7 @@
 [ext_resource type="Material" uid="uid://dr1v0p3swvlos" path="res://assets/materials/mat_PillarThing.tres" id="12_20nt0"]
 [ext_resource type="Texture2D" uid="uid://d120mq4abyu4v" path="res://assets/sprites/page.png" id="12_ubeci"]
 [ext_resource type="Script" path="res://scripts/scr_SpinningWall.gd" id="13_cvp0f"]
+[ext_resource type="Material" uid="uid://bg5mr2fwflqpp" path="res://assets/materials/mat_MetalWall.tres" id="13_iapd7"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="14_wxooe"]
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
 [ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="16_irywk"]
@@ -527,21 +528,25 @@ size = Vector3(0.694366, 0.523438, 1)
 
 [node name="WallRight6" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 38.5681, 3.39235, 10.4347)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.443375, 0.523438, 1)
 
 [node name="WallRight7" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 30.1662, 1.42143, 10.4601)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.443375, 0.106445, 1)
 
 [node name="WallRight8" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 30.1868, 4.77164, 10.4577)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.443375, 0.247559, 1)
 
 [node name="WallRight9" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 31.4796, 3.33828, 5.84344)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.510285, 0.536621, 1)
 
@@ -556,6 +561,7 @@ door_end = Vector3(0, 70, 0)
 
 [node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 41.9205, 3.36721, 5.83853)
+material_override = ExtResource("12_20nt0")
 use_collision = true
 size = Vector3(0.0151445, 0.536621, 1)
 
@@ -567,11 +573,13 @@ size = Vector3(0.134209, 0.536621, 1)
 
 [node name="WallLeft10" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 42.0194, 0.782259, 8.12125)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.472229, 0.194824, 1)
 
 [node name="WallLeft11" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 42.0279, 4.29065, 8.14264)
+material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.439209, 0.304382, 1)
 
@@ -581,11 +589,13 @@ power = 0.07
 
 [node name="WallLeft12" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 43.4943, 0.782259, 5.84862)
+material_override = ExtResource("11_rvy0d")
 use_collision = true
 size = Vector3(0.324005, 0.194824, 1)
 
 [node name="WallLeft13" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 43.2919, 4.27886, 5.91395)
+material_override = ExtResource("11_rvy0d")
 use_collision = true
 size = Vector3(0.300659, 0.304382, 1)
 
@@ -718,6 +728,7 @@ size = Vector3(0.396858, 0.194824, 1)
 
 [node name="WallRight29" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(268.077, 0, 0, 0, 9.49386, 0, 0, 0, 0.266046, -13.9339, 3.38227, -35.3388)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.120408, 0.536621, 1)
 
@@ -842,16 +853,19 @@ size = Vector3(0.001, 0.536621, 1)
 
 [node name="WallRight33" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(268.077, 0, 0, 0, 9.49386, 0, 0, 0, 0.266046, -16.1098, 3.35727, -6.97842)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.136864, 0.536621, 1)
 
 [node name="WallRight34" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, 0.954691, 3.38954, -29.5975)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0453349, 0.536621, 1)
 
 [node name="WallRight35" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, 0.954691, 3.38954, -12.9662)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.045457, 0.536621, 1)
 
@@ -904,6 +918,7 @@ transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.014632)
 
 [node name="WallRight43" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, -30.095, 3.36412, -24.2705)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0862903, 0.526703, 1)
 
@@ -965,6 +980,7 @@ transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.014632)
 
 [node name="WallRight47" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, -30.095, 3.36412, -8.10132)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0134413, 0.526703, 1)
 
@@ -979,16 +995,19 @@ door_end = Vector3(0, -90, 0)
 
 [node name="WallRight48" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(268.077, 0, 0, 0, 9.49386, 0, 0, 0, 0.266046, -38.1091, 3.3862, -15.6187)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0585443, 0.536621, 1)
 
 [node name="WallRight49" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, -45.5776, 3.39305, -8.1532)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0586819, 0.526703, 1)
 
 [node name="WallRight50" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-1.1718e-05, 0, 0.266046, 0, 9.49386, 0, -268.077, 0, -1.16292e-08, -34.3197, 3.39305, -3.5347)
+material_override = ExtResource("13_iapd7")
 use_collision = true
 size = Vector3(0.0253127, 0.526703, 1)
 
@@ -1231,7 +1250,7 @@ curve = SubResource("Curve3D_6f4ak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.7
+speed = 0.08
 
 [node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
 collision_layer = 2
@@ -1241,11 +1260,11 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90735e-06, 0, -13)
 progress = 20.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.7
+speed = 0.08
 
 [node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
 
@@ -1258,16 +1277,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
 progress = 10.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.7
+speed = 0.08
 
 [node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
 
 [node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -23.0001)
 progress = 30.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.7
+speed = 0.08
 
 [node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527134, 4.05276, -0.00727844)
@@ -1283,7 +1302,7 @@ curve = SubResource("Curve3D_6f4ak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.15
+speed = 0.12
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
 
@@ -1292,7 +1311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
 progress = 20.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.15
+speed = 0.12
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
 
@@ -1305,7 +1324,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
 progress = 10.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.15
+speed = 0.12
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52013, 0)
@@ -1315,7 +1334,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
 progress = 30.0
 rotation_mode = 0
 script = SubResource("GDScript_nqwy0")
-speed = 0.15
+speed = 0.12
 
 [node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55638, 0)
