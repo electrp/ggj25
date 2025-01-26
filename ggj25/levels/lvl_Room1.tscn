@@ -144,7 +144,7 @@ use_collision = true
 size = Vector3(0.123383, 0.469727, 1)
 
 [node name="PfDoor" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_6pof4")]
-transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, 9.27964, 3.53975, 5.12462)
+transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, 9.23335, 3.36378, 5.14743)
 script = SubResource("GDScript_a0aq6")
 door_time = 1.0
 door_end = Vector3(0, -90, 0)
