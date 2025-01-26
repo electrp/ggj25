@@ -6,12 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="4_eowoj"]
 [ext_resource type="PackedScene" path="res://prefabs/pf_MovingBlock.tscn" id="5_nqnky"]
 [ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="5_w5vv4"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" path="res://prefabs/pf_RaceWall.tscn" id="7_em31y"]
-=======
 [ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="7_em31y"]
 [ext_resource type="PackedScene" uid="uid://divgqk0d2lwlt" path="res://prefabs/pf_Fan.tscn" id="9_x63ci"]
->>>>>>> 58540bd52e6692916df16eca2c10fbfabaee5a08
 [ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="11_hp051"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
