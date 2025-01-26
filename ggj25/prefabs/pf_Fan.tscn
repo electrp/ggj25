@@ -13,6 +13,7 @@ var falloff_scale: float
 @export var activate: bool = true
 
 @onready var end_marker: Node3D = $Area3D/CollisionShape3D/EndMarker
+@onready var particle_emitter = $GPUParticles3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,7 +24,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if(!activate):
+		particle_emitter.emitting = false
 		return
+	else:
+		particle_emitter.emitting = true
 	
 	var norm = end_marker.global_position - self.global_position
 	falloff_scale = norm.length()
