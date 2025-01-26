@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5logkqgxqaun"]
+
+[ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
+[ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
+[ext_resource type="Environment" uid="uid://c0q38xibq7hb0" path="res://assets/materials/env_Player.tres" id="3_4aogy"]
+[ext_resource type="PackedScene" uid="uid://cd4763redojxq" path="res://prefabs/pf_PortableFan.tscn" id="3_dev6a"]
+[ext_resource type="Material" uid="uid://ct3lje8apjv7l" path="res://assets/materials/mat_Fan.tres" id="4_tjxdt"]
+[ext_resource type="Texture2D" uid="uid://d120mq4abyu4v" path="res://assets/sprites/page.png" id="6_m1q6i"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5qq5j"]
+
+[node name="Player" type="Node3D" groups=["poppable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000385284, 0, 0.0133736)
+script = ExtResource("1_7qmpx")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["poppable"]]
+script = ExtResource("2_v3qta")
+jumpVel = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" groups=["poppable"]]
+mesh = SubResource("CapsuleMesh_ijbdt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" groups=["poppable"]]
+shape = SubResource("CapsuleShape3D_5qq5j")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0067358, -2.38419e-07, 0.145672)
+environment = ExtResource("3_4aogy")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -1.93467e-07, -1, 0, 4.426, -4.37114e-08, 0, 0, -0.47324)
+collision_mask = 3
+
+[node name="FanModel" type="Node3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(0.1, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.714386, -0.721479, -0.794597)
+
+[node name="Handle" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136642, 0.012306, -0.0119386)
+material_override = ExtResource("4_tjxdt")
+
+[node name="Blower" type="CSGCylinder3D" parent="CharacterBody3D/Head/FanModel"]
+transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0.0136642, 1.46638, -0.0119386)
+material_override = ExtResource("4_tjxdt")
+
+[node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0456269, -0.604885, 0.52699)
+
+[node name="Note" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Note"]
+
+[node name="ContControl" type="Control" parent="Note/CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -640.0
+offset_top = -432.0
+offset_right = -640.0
+offset_bottom = -432.0
+scale = Vector2(3, 3)
+
+[node name="Continue" type="Button" parent="Note/CanvasLayer/ContControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 151.0
+offset_top = 200.667
+offset_right = 272.0
+offset_bottom = 231.667
+grow_horizontal = 2
+grow_vertical = 0
+text = "If  you say so..."
+
+[node name="Page" type="TextureRect" parent="Note/CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 550.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_m1q6i")

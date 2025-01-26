@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmjmirg3qxamh"]
+[gd_scene load_steps=6 format=3 uid="uid://dmjmirg3qxamh"]
 
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="1_yugjp"]
+[ext_resource type="Texture2D" uid="uid://r3re3enei0el" path="res://assets/textures/Plaster/Plaster_20-256x256.png" id="2_oigb4"]
 [ext_resource type="AudioStream" uid="uid://hh6f6eydmccw" path="res://assets/sounds/snd_Door.wav" id="2_wowq4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioy7e"]
+albedo_texture = ExtResource("2_oigb4")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_kts2n"]
 
@@ -15,6 +21,7 @@ door_end = Vector3(0, 90, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+material_override = SubResource("StandardMaterial3D_ioy7e")
 mesh = SubResource("BoxMesh_kts2n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["poppable"]]

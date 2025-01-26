@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dwlis1l3yob3j"]
+
+[ext_resource type="Texture2D" uid="uid://camwi2wmuekqs" path="res://assets/textures/Bricks/Bricks_23-256x256.png" id="1_k4bjm"]
+
+[resource]
+albedo_texture = ExtResource("1_k4bjm")
+uv1_scale = Vector3(0.786, 0.786, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
