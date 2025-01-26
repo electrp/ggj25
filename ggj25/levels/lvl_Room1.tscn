@@ -742,7 +742,6 @@ size = Vector3(0.0217559, 0.536621, 1)
 
 [node name="grate3" parent="SubViewportContainer" instance=ExtResource("5_d6it0")]
 transform = Transform3D(-4.15651e-06, 6.84957e-07, 1.349, -2.68571e-21, 7.835, -1.17933e-07, 31.6966, -2.15207e-14, 1.769e-07, 1.00796, 2.27221, -21.3483)
-visible = false
 
 [node name="Node3D" parent="SubViewportContainer/grate3" instance=ExtResource("3_xm7k1")]
 transform = Transform3D(1, 8.7423e-08, -8.95073e-07, -8.74226e-08, 1, 5.07754e-07, 8.95073e-07, -5.07754e-07, 1, 0, 0, 0)
