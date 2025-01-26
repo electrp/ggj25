@@ -8,7 +8,7 @@ script/source = "extends RigidBody3D
 
 @onready var collision_shape = $CollisionShape3D
 @onready var sprite = $Sprite3D
-var pos = self.position.z
+var pos = self.position.y
 
 const TARGET_COLLISION_SCALE = Vector3(1, 1, 1)
 const TARGET_SPRITE_SCALE = Vector3(3, 3, 3)
@@ -20,7 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.position.z = pos
+	self.position.y = pos
 
 	var collision_increment = 1.0 / TARGET_SPRITE_SCALE.x
 	var increment = delta * 5
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		sprite.scale = TARGET_SPRITE_SCALE
 
 func _on_body_entered(body: Node) -> void:
-	if(body.is_in_group(\"BubbleButton\")):
+	if(body.name == \"BubbleButton\"):
 		body.trigger()
 	if(body.is_in_group(\"poppable\")):
 		print(\"bubble popped on \", body.name)
