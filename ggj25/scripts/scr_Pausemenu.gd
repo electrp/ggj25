@@ -9,8 +9,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	pause.visible = false
-	pause.get_node("Control/Continue").connect("pressed", _continue)
-	pause.get_node("Control/Exit").connect("pressed", _quit)
+	pause.get_node("ContControl/Continue").connect("pressed", _continue)
+	pause.get_node("ExitControl/Exit").connect("pressed", _quit)
 
 func _continue():
 	if isPaused == true:
@@ -24,7 +24,7 @@ func _quit():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_released("ui_cancel"):
 		if isPaused == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			pause.visible = true
