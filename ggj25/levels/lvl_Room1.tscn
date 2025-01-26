@@ -187,24 +187,24 @@ use_collision = true
 size = Vector3(0.443375, 0.247559, 1)
 
 [node name="WallRight9" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 31.4796, 3.33828, 5.84344)
+transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 31.1891, 3.33828, 5.84344)
 use_collision = true
-size = Vector3(0.510285, 0.536621, 1)
+size = Vector3(0.489395, 0.536621, 1)
 
 [node name="Fan" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_43o8t")]
-transform = Transform3D(5.59327, 0, 5.44118e-07, 0, -3.61953, 0, 4.88979e-07, 0, -6.22399, 29.5719, 3.04644, 12.1947)
-power = 0.25
+transform = Transform3D(5.66211, 0, 5.50815e-07, 0, -3.66408, 0, 4.94997e-07, 0, -6.3006, 29.5719, 3.04644, 12.1947)
+power = 0.15
 
 [node name="PfDoor2" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_6pof4")]
-transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, 38.5883, 3.39271, 5.8072)
+transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, 37.9933, 3.39271, 5.80553)
 script = SubResource("GDScript_a0aq6")
 door_time = 1.0
 door_end = Vector3(0, 70, 0)
 
 [node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 41.9205, 3.36721, 5.83853)
+transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 41.0973, 3.36721, 5.83853)
 use_collision = true
-size = Vector3(0.0151445, 0.536621, 1)
+size = Vector3(0.00708397, 0.536621, 1)
 
 [node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(3.51541e-05, 0, -0.266045, 0, 9.49386, 0, 268.077, 0, 3.48876e-08, 44.6039, 3.36721, -7.12501)
@@ -217,34 +217,34 @@ use_collision = true
 size = Vector3(0.0241854, 0.536621, 1)
 
 [node name="WallLeft10" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 42.0194, 0.782259, 8.12125)
+transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 41.2433, 0.782259, 8.12125)
 use_collision = true
 size = Vector3(0.472229, 0.194824, 1)
 
 [node name="WallLeft11" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 42.0279, 4.29065, 8.14264)
+transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 41.1676, 4.29065, 8.13799)
 use_collision = true
 size = Vector3(0.439209, 0.304382, 1)
 
 [node name="Fan2" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_43o8t")]
-transform = Transform3D(2.3034, 0, 5.5838e-07, 0, -3.61953, 0, 2.0137e-07, 0, -6.38712, 43.3165, 3.07538, 12.1898)
+transform = Transform3D(3.30679, 0, 5.5838e-07, 0, -3.61953, 0, 2.89089e-07, 0, -6.38712, 43.159, 3.07538, 12.1898)
 power = 0.07
 
 [node name="WallLeft12" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 43.4943, 0.782259, 5.84862)
+transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 43.13, 0.782259, 5.84862)
 use_collision = true
-size = Vector3(0.324005, 0.194824, 1)
+size = Vector3(0.396858, 0.194824, 1)
 
 [node name="WallLeft13" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 43.2919, 4.27886, 5.91395)
+transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 42.9878, 4.2832, 5.90066)
 use_collision = true
-size = Vector3(0.300659, 0.304382, 1)
+size = Vector3(0.360855, 0.304382, 1)
 
 [node name="grate2" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_d6it0")]
-transform = Transform3D(1.28786e-06, -6.84957e-07, -1.349, 0, 7.835, -1.17933e-07, -29.4627, -2.99404e-14, -5.89667e-08, 42.0575, 2.27462, 8.16173)
+transform = Transform3D(1.28786e-06, -6.84957e-07, -1.349, 0, 7.835, -1.17933e-07, -29.4627, -2.99404e-14, -5.89667e-08, 41.1992, 2.27462, 8.16173)
 
 [node name="grate3" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_d6it0")]
-transform = Transform3D(15.6182, 4.20986e-15, 1.17933e-07, -4.85083e-21, 7.835, -1.17933e-07, 1.36539e-06, -6.84957e-07, -1.349, 43.2888, 2.27462, 5.8371)
+transform = Transform3D(23.0259, 4.20986e-15, 1.17933e-07, -7.15157e-21, 7.835, -1.17933e-07, 2.01299e-06, -6.84957e-07, -1.349, 42.8021, 2.28249, 5.83745)
 
 [node name="Node3D" parent="SubViewportContainer/SubViewport/grate3" instance=ExtResource("3_xm7k1")]
 transform = Transform3D(-0.124, -1.32883e-08, 8.50316e-08, 1.08404e-08, -0.152, -4.82366e-08, -1.10989e-07, 7.71786e-08, -0.095, 0, 0, 0.277514)
@@ -356,6 +356,7 @@ size = Vector3(0.00488867, 0.536621, 1)
 
 [node name="Fan" parent="." instance=ExtResource("3_43o8t")]
 transform = Transform3D(-3.17103e-07, 0, 12.3662, 0, 4.15205, 0, -7.25447, 0, -5.40542e-07, 10.0805, 3.10317, -21.3192)
+power = 0.5
 
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
