@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://blp4ky1vg6all"
-path="res://.godot/imported/grate.fbx-9ed9efbb02509c02c72fea206c009fcd.scn"
+path="res://.godot/imported/grate.fbx-367b5a29e4917774588decb8c09a120b.scn"
 
 [deps]
 
-source_file="res://assets/models/grate.fbx"
-dest_files=["res://.godot/imported/grate.fbx-9ed9efbb02509c02c72fea206c009fcd.scn"]
+source_file="res://assets/materials/models/grate.fbx"
+dest_files=["res://.godot/imported/grate.fbx-367b5a29e4917774588decb8c09a120b.scn"]
 
 [params]
 
