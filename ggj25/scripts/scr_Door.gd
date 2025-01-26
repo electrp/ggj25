@@ -23,5 +23,12 @@ func _physics_process(delta: float) -> void:
 	
 	var rads: Vector3 = door_end / 180 * PI
 	
-	self.rotation = lerp(door_start, rads + door_start, current_t)
+	self.rotation = Vector3(
+		lerp(door_start.x, rads.x + door_start.x, current_t),
+		lerp(door_start.y, rads.y + door_start.y, current_t),
+		lerp(door_start.z, rads.z + door_start.z, current_t)
+	)
 	pass
+
+func _on_node_3d_bubble_entered() -> void:
+	pass # Replace with function body.
