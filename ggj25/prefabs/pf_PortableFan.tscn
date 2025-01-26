@@ -5,7 +5,7 @@
 [node name="PortableFan" type="Node3D"]
 
 [node name="Fan" parent="." instance=ExtResource("1_45sr3")]
-transform = Transform3D(2.72637, 0, 0, 0, 2.72637, 0, 0, 0, 16.9897, 0.135366, 0, 0.0296283)
+transform = Transform3D(2.72637, 0, 0, 0, 2.72637, 0, 0, 0, 8.64072, 0.135366, 0, 0.0296283)
 falloff = true
 power = 1.0
 activate = false

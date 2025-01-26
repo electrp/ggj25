@@ -201,9 +201,9 @@ door_time = 1.0
 door_end = Vector3(0, 70, 0)
 
 [node name="WallRight10" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 42.0462, 3.36721, 5.83853)
+transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, 41.9205, 3.36721, 5.83853)
 use_collision = true
-size = Vector3(0.0241854, 0.536621, 1)
+size = Vector3(0.0151445, 0.536621, 1)
 
 [node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(3.51541e-05, 0, -0.266045, 0, 9.49386, 0, 268.077, 0, 3.48876e-08, 44.6039, 3.36721, -1.20229)
@@ -226,7 +226,7 @@ use_collision = true
 size = Vector3(0.439209, 0.304382, 1)
 
 [node name="Fan2" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_43o8t")]
-transform = Transform3D(2.3034, 0, 5.86913e-07, 0, -3.61953, 0, 2.0137e-07, 0, -6.7135, 43.3165, 3.07538, 12.1898)
+transform = Transform3D(2.3034, 0, 5.5838e-07, 0, -3.61953, 0, 2.0137e-07, 0, -6.38712, 43.3165, 3.07538, 12.1898)
 power = 0.07
 
 [node name="WallLeft12" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
@@ -243,10 +243,10 @@ size = Vector3(0.300659, 0.304382, 1)
 transform = Transform3D(1.28786e-06, -6.84957e-07, -1.349, 0, 7.835, -1.17933e-07, -29.4627, -2.99404e-14, -5.89667e-08, 42.0575, 2.27462, 8.16173)
 
 [node name="grate3" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_d6it0")]
-transform = Transform3D(13.8116, 4.20986e-15, 1.17933e-07, -4.28972e-21, 7.835, -1.17933e-07, 1.20745e-06, -6.84957e-07, -1.349, 43.4105, 2.27462, 5.7889)
+transform = Transform3D(15.6182, 4.20986e-15, 1.17933e-07, -4.85083e-21, 7.835, -1.17933e-07, 1.36539e-06, -6.84957e-07, -1.349, 43.2888, 2.27462, 5.8371)
 
 [node name="Node3D" parent="SubViewportContainer/SubViewport/grate3" instance=ExtResource("3_xm7k1")]
-transform = Transform3D(0.0724029, 5.14453e-16, 6.32966e-09, 9.75462e-16, 0.127632, -1.1158e-08, 6.48056e-08, -6.48056e-08, -0.74129, -3.14305, -0.290315, 4.29125)
+transform = Transform3D(-0.124, -1.32883e-08, 8.50316e-08, 1.08404e-08, -0.152, -4.82366e-08, -1.10989e-07, 7.71786e-08, -0.095, 0, 0, 0.277514)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
 
