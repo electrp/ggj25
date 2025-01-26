@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 		query.collide_with_bodies = true
 		query.exclude = [self, node]
 		
-		# 충돌 체크
 		var result = space_state.intersect_ray(query)
 		if result.size() > 0:
 			continue

@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		spawned_bubble = bubble_scene.instantiate();
 		add_child(spawned_bubble);
 		spawned_bubble.position = $Marker3D.position
-		spawned_bubble.apply_impulse(($Marker3D.global_position - global_position) * 50)
+		spawned_bubble.apply_impulse(($Marker3D.global_position - global_position) * 30)
 	pass
 
 func _on_body_entered(body: Node):
