@@ -33,6 +33,7 @@ bubble=""
 interactable=""
 BubbleButton=""
 unpoppable=""
+AntiGravity="ignores the axis lock for bubble"
 
 [input]
 

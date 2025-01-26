@@ -9,6 +9,7 @@ script/source = "extends RigidBody3D
 @onready var collision_shape = $CollisionShape3D
 @onready var sprite = $Sprite3D
 var pos = self.position.z
+var gravity = true
 
 const TARGET_COLLISION_SCALE = Vector3(1, 1, 1)
 const TARGET_SPRITE_SCALE = Vector3(3, 3, 3)
@@ -20,7 +21,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.position.z = pos
+	if gravity:
+		self.position.z = pos
 
 	var collision_increment = 1.0 / TARGET_SPRITE_SCALE.x
 	var increment = delta * 5
@@ -52,6 +54,10 @@ func _physics_process(delta: float) -> void:
 			linear_velocity = linear_velocity.bounce(collision.get_normal())
 		else:
 			linear_velocity = linear_velocity.bounce(collision.get_normal())
+			
+		if (collision.get_collider() as Node3D).is_in_group(\"AntiGravity\"):
+			gravity = false
+
 
 		
 "

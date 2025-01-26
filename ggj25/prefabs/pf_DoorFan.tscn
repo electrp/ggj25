@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxl6gnluuatao"]
+
+[ext_resource type="Script" path="res://scripts/pf_fan.gd" id="1_i3hpa"]
+[ext_resource type="Texture2D" uid="uid://bnsi48nhlog1s" path="res://assets/sprites/spr_wind.png" id="1_jshbm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_svdw7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48vq1"]
+emission_shape_offset = Vector3(0, 0, -4)
+emission_shape = 3
+emission_box_extents = Vector3(3, 3, 1)
+direction = Vector3(0, 0, 3)
+spread = 3.5
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 10.0
+linear_accel_max = 25.0
+turbulence_noise_strength = 0.0
+turbulence_noise_scale = 1.0
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eock0"]
+transparency = 1
+albedo_texture = ExtResource("1_jshbm")
+texture_filter = 2
+texture_repeat = false
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_qw30j"]
+material = SubResource("StandardMaterial3D_eock0")
+size = Vector2(0.8, 0.4)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vuko0"]
+
+[node name="PfDoorVent" type="Node3D" groups=["AntiGravity"]]
+script = ExtResource("1_i3hpa")
+power = 20.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -2.105, 0, 1, -9.20125e-08, 0, -1.49506, 0.5)
+disable_mode = 2
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["AntiGravity"]]
+transform = Transform3D(0.42, 0, 0, 0, 1.765, 0, 0, 0, 1.905, 0, 0, 0.0590664)
+shape = SubResource("BoxShape3D_svdw7")
+
+[node name="EndMarker" type="Marker3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+gizmo_extents = 0.29
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.766106)
+size = Vector3(2, 2, 0.547854)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.125, 0, 0, 0, -5.46392e-09, -0.125, 0, 0.125, -5.46392e-09, 0.00525093, 1.63913e-07, 0.49922)
+amount = 50
+lifetime = 2.0
+speed_scale = 0.6
+fixed_fps = 60
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_48vq1")
+draw_pass_1 = SubResource("QuadMesh_qw30j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -5.13609e-08, -0.3, 0, 1.175, -1.31134e-08, 0, 0.550869, 0.51135)
+mesh = SubResource("CapsuleMesh_vuko0")

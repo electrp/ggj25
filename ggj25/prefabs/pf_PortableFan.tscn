@@ -8,4 +8,3 @@
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 9, 0, 0, 0)
 falloff = true
 power = 1.0
-activate = false
