@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://degkkr3dbs6jp"]
+[gd_scene load_steps=7 format=3 uid="uid://degkkr3dbs6jp"]
 
 [ext_resource type="Script" path="res://scripts/scr_BubbleButton.gd" id="1_bsgiw"]
+[ext_resource type="PackedScene" uid="uid://cvtqjhvbijcac" path="res://prefabs/pf_Vent.tscn" id="2_kd113"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g8j5k"]
 height = 0.131
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqjkf"]
+albedo_color = Color(1, 0, 0, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_yd8n7"]
+material = SubResource("StandardMaterial3D_bqjkf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cja1l"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="BubbleButton" type="Node3D"]
 
@@ -19,3 +27,12 @@ shape = SubResource("CylinderShape3D_g8j5k")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, -0.05, 0, 1, -2.18557e-09, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_yd8n7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-5.24537e-08, -0.06, 0, 1.2, -2.62268e-09, 0, 0, 0, 1.2, -0.111115, 0, 0)
+mesh = SubResource("CylinderMesh_yd8n7")
+surface_material_override/0 = SubResource("StandardMaterial3D_cja1l")
+
+[node name="Node3D" parent="." instance=ExtResource("2_kd113")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0.367503, 0, 0.0146317)
+visible = false

@@ -32,6 +32,7 @@ poppable=""
 bubble=""
 interactable=""
 BubbleButton=""
+unpoppable=""
 
 [input]
 
