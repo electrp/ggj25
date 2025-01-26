@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/scr_Player.gd" id="1_7qmpx"]
 [ext_resource type="Script" path="res://scripts/scr_CharacterBody.gd" id="2_v3qta"]
-[ext_resource type="Environment" uid="uid://c0q38xibq7hb0" path="res://assets/materials/env_Player.tres" id="3_4aogy"]
+[ext_resource type="Environment" uid="uid://ci28d6smjuwor" path="res://assets/materials/env_Player.tres" id="3_4aogy"]
 [ext_resource type="PackedScene" uid="uid://cd4763redojxq" path="res://prefabs/pf_PortableFan.tscn" id="3_dev6a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ijbdt"]
@@ -19,7 +19,7 @@ script = ExtResource("2_v3qta")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
 mesh = SubResource("CapsuleMesh_ijbdt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" groups=["poppable"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_5qq5j")
 
 [node name="Head" type="Node3D" parent="CharacterBody3D"]
