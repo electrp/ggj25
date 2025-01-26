@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ijnb2538qm8n"]
+[gd_scene load_steps=15 format=3 uid="uid://ijnb2538qm8n"]
 
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_0v8sg"]
 [ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="2_jxg3y"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="9_m6ncy"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="10_7ruml"]
 [ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_vhd0l"]
+[ext_resource type="PackedScene" uid="uid://b6wx652uxyous" path="res://prefabs/pf_FanDown.tscn" id="13_2kjrw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_0v8sg")
@@ -217,6 +218,10 @@ size = Vector3(0.180817, 0.523438, 1)
 [node name="PfDoorVent" parent="." instance=ExtResource("8_dvc8f")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -6.04176, 4.89184, -1.62407)
 falloff = true
+
+[node name="Fan" parent="." instance=ExtResource("13_2kjrw")]
+transform = Transform3D(1, 0, 0, 0, 0.0104543, -0.999945, 0, 0.999945, 0.0104543, -3.10914, 2.61959, 5.63239)
+power = 2.0
 
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="PfDoor2" method="_open_handler"]
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor" method="_open_handler"]
