@@ -15,43 +15,47 @@ var falloff_scale: float
 @onready var end_marker: Node3D = $Area3D/CollisionShape3D/EndMarker
 @onready var particle_emitter = $GPUParticles3D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-	
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if(!activate):
+	if !activate:
 		particle_emitter.emitting = false
 		return
 	else:
 		particle_emitter.emitting = true
-	
+
 	var norm = end_marker.global_position - self.global_position
 	falloff_scale = norm.length()
-	plane = Plane(norm.normalized(), self.global_position);
+	plane = Plane(norm.normalized(), self.global_position)
 
 	for node in $Area3D.get_overlapping_bodies():
-		if(!node.is_in_group(\"pushable\")):
+		if !node.is_in_group(\"pushable\"):
 			continue
-			
-		if(!node is RigidBody3D):
+
+		if !node is RigidBody3D:
 			continue
-		
+
 		var rb = node as RigidBody3D
 		
-		if(falloff):
+		var ray_origin = self.global_position
+		var ray_target = node.global_position
+		var space_state = get_world_3d().direct_space_state
+		
+		var query = PhysicsRayQueryParameters3D.new()
+		query.from = ray_origin
+		query.to = ray_target
+		query.collide_with_bodies = true
+		query.exclude = [self, node]
+		
+		var result = space_state.intersect_ray(query)
+		if result.size() > 0:
+			continue
+
+		if falloff:
 			var dist: float = plane.distance_to(node.global_position)
 			var scale = abs(1 - dist / falloff_scale)
 			rb.apply_impulse(power * scale * plane.normal)
 		else:
 			rb.apply_impulse(power * plane.normal)
-					
-	pass
-
-func _on_area_3d_area_entered(area: Area3D) -> void:
-	pass # Replace with function body.
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bcesa"]
