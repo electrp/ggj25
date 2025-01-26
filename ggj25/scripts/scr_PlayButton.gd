@@ -22,3 +22,5 @@ func _input(event) -> void:
 	if event is InputEventMouseButton and event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
 		if clicked == true:
 			clicked = false
+			get_tree().change_scene_to_file("res://levels/lvl_Room1.tscn")
+			
