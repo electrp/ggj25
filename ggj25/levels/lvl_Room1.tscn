@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=29 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="6_6pof4"]
 [ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_ou4ee"]
 [ext_resource type="Shader" path="res://assets/shaders/pf_Vent.gdshader" id="11_oxb8k"]
+[ext_resource type="Script" path="res://scripts/scr_FloatEnding.tres.gd" id="11_yf4jm"]
 [ext_resource type="Script" path="res://scripts/scr_SpinningWall.gd" id="13_cvp0f"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="14_wxooe"]
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
@@ -47,6 +48,12 @@ func _on_node_3d_bubble_entered() -> void:
 	self.open = true
 	pass # Replace with function body.
 "
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gti5i"]
+size = Vector3(15.9508, 3.53522, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m4v8"]
+size = Vector3(17.9921, 5.28137, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcav0"]
 render_priority = 0
@@ -426,10 +433,10 @@ use_collision = true
 size = Vector3(0.861328, 1, 1)
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_2lqyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.216, 1.82582, -12.1785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.727, 1.82582, 11.878)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
-transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, -38.6009, 2.25, -12.0071)
+transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, -222.112, 2.25, 12.0494)
 
 [node name="WallLeft3" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 14.5768, 5.57578, -0.127202)
@@ -688,6 +695,22 @@ size = Vector3(0.396858, 0.194824, 1)
 transform = Transform3D(268.077, 0, 0, 0, 9.49386, 0, 0, 0, 0.266046, -13.9339, 3.38227, -35.3388)
 use_collision = true
 size = Vector3(0.120408, 0.536621, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.119, 5.22232, -7.95633)
+shape = SubResource("BoxShape3D_gti5i")
+
+[node name="Area3D" type="Area3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -224.194, 0, -8.2869)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("11_yf4jm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23334, 4.12332, -2.21403)
+shape = SubResource("BoxShape3D_1m4v8")
 
 [node name="PfBubbleButton" parent="SubViewportContainer" instance=ExtResource("10_ou4ee")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25759, 2.51499, -13.1958)
@@ -1377,16 +1400,16 @@ use_collision = true
 size = Vector3(0.198305, 0.964615, 1)
 
 [node name="WallRight13" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.312, 0.596202, 12.7156)
+transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.327, 0.596202, 5.79083)
 material_override = ExtResource("3_j23t1")
 use_collision = true
-size = Vector3(0.491242, 0.564701, 1)
+size = Vector3(0.98914, 0.564701, 1)
 
 [node name="WallRight14" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.35, 6.29442, 12.9316)
+transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.366, 6.29442, 5.81406)
 material_override = ExtResource("3_j23t1")
 use_collision = true
-size = Vector3(0.484648, 1.60213, 1)
+size = Vector3(0.996406, 1.60213, 1)
 
 [node name="WallRight5" type="CSGBox3D" parent="." groups=["poppable"]]
 transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, -194.82, 4.95081, 54.0578)
@@ -1485,10 +1508,10 @@ use_collision = true
 size = Vector3(0.00656125, 1, 0.00524616)
 
 [node name="WallRight15" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -231.652, 4.17295, 31.0477)
+transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -231.667, 4.17295, 24.2792)
 material_override = ExtResource("3_j23t1")
 use_collision = true
-size = Vector3(1.84406, 2.36854, 1)
+size = Vector3(2.33072, 2.36854, 1)
 
 [node name="Fan" parent="." instance=ExtResource("3_43o8t")]
 transform = Transform3D(5.91964e-07, 0, -84.5457, 0, 4.78283, 0, 4.51418, 0, 1.10868e-05, -147.576, 3.86226, 16.8114)
@@ -1501,10 +1524,10 @@ use_collision = true
 size = Vector3(2.52707, 0.953125, 1)
 
 [node name="Floor" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, -195.913, 0.354833, 35.9055)
+transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, -195.913, 0.354833, 38.945)
 material_override = ExtResource("2_03ixh")
 use_collision = true
-size = Vector3(0.937438, 1, 1)
+size = Vector3(0.937438, 1, 0.93927)
 
 [node name="wall" type="CSGBox3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -149.907, 2.98807, 17.5511)
@@ -1530,8 +1553,22 @@ material_override = ExtResource("20_3b0b3")
 use_collision = true
 size = Vector3(1, 0.592041, 0.116175)
 
+[node name="WallRight18" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.334, 2.44206, 3.01269)
+material_override = ExtResource("3_j23t1")
+use_collision = true
+size = Vector3(0.790682, 0.379395, 1)
+
+[node name="WallRight19" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(27.816, 0, 0.000589755, 0, 3.96571, 0, -0.0616613, 0, 0.266044, -224.418, 0.602124, -7.50695)
+material_override = ExtResource("3_j23t1")
+use_collision = true
+size = Vector3(0.591072, 0.564701, 1)
+
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
+[connection signal="area_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_area_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_body_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate/Node3D" to="SubViewportContainer/PfDoor3" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate2/Node3D" to="SubViewportContainer/PfDoor2" method="_on_node_3d_bubble_entered"]
