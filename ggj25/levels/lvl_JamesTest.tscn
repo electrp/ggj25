@@ -221,6 +221,124 @@ transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 3.6626
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_epjbm")]
 
+<<<<<<< HEAD
+[node name="PfDoor" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(3.10094, 4.02576e-07, 0.00331871, -2.71273e-07, 4.608, 0, -0.113164, -1.46914e-08, 0.0909395, -7.0497, 3.36378, -1.71764)
+
+[node name="WallRight19" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -8.99008, 3.40086, -9.95319)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight20" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -3.97999, 5.42189, -9.89914)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight21" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -2.36049, 5.42189, -9.90072)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight22" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -2.37018, -0.696583, -9.90072)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight23" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -3.97564, -0.696583, -9.88246)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight24" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 2.70438, 3.29642, -9.88721)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight25" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -17.4829, 3.40086, -9.95319)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="PfDoor2" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, -14.7987, 3.36378, -9.9295)
+
+[node name="WallRight12" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 1.52291, 3.40086, 5.39128)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+script = ExtResource("10_7ruml")
+
+[node name="WallRight13" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 6.533, 3.28321, 5.44533)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight14" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.1525, 3.316, 5.44375)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight15" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.14281, -0.696583, 5.44375)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight16" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 6.53735, -0.696583, 5.462)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight17" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 13.2174, 3.29642, 5.45726)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight18" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -6.96996, 3.40086, 5.39128)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="PfDoorVent" parent="." instance=ExtResource("8_dvc8f")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -6.04176, 4.89184, -1.62407)
+
+[node name="PfDoor3" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(-1.19385e-07, 6.31112, -1.41325e-10, -0.910003, -8.27236e-07, -0.00323314, -0.0332092, -2.01213e-08, 0.0885947, -3.13445, 2.86241, -9.66931)
+door_end = Vector3(-180, 0, 0)
+
+[node name="Fan" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 0.0104543, -0.999945, 0, 0.999945, 0.0104543, -3.10914, 2.61959, 5.63239)
+power = 2.0
+script = null
+
+[connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="PfDoor2" method="_open_handler"]
+[connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor" method="_open_handler"]
+[connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="PfDoor3" method="_on_bubble_button_3_triggered"]
+=======
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="SubViewportContainer/SubViewport/PfDoor2" method="_open_handler"]
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="SubViewportContainer/SubViewport/PfDoor" method="_open_handler"]
 [connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton3" to="SubViewportContainer/SubViewport/PfDoor3" method="_on_bubble_button_3_triggered"]
+>>>>>>> 74eead4bcf2fcd1738001c69b2c9ed1ef0bd8b46
