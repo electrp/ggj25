@@ -48,8 +48,8 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		if !(collision.get_collider() as Node3D).is_in_group(\"unpoppable\") :
 			self.queue_free()
-		if (collision.get_collider() as Node3D).is_in_group(\"BubbleButton\"):
-			collision.get_collider().trigger()
+		elif (collision.get_collider() as Node3D).is_in_group(\"BubbleButton\"):
+			linear_velocity = linear_velocity.bounce(collision.get_normal())
 		else:
 			linear_velocity = linear_velocity.bounce(collision.get_normal())
 

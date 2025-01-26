@@ -28,3 +28,7 @@ func _physics_process(delta: float) -> void:
 	
 func _open_handler() -> void:
 	open = true
+
+
+func _on_bubble_button_triggered() -> void:
+	pass # Replace with function body.

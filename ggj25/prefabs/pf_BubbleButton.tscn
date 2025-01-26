@@ -16,9 +16,9 @@ material = SubResource("StandardMaterial3D_bqjkf")
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="BubbleButton" type="Node3D"]
+script = ExtResource("1_bsgiw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["BubbleButton"]]
-script = ExtResource("1_bsgiw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -34,5 +34,6 @@ mesh = SubResource("CylinderMesh_yd8n7")
 surface_material_override/0 = SubResource("StandardMaterial3D_cja1l")
 
 [node name="Node3D" parent="." instance=ExtResource("2_kd113")]
-transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0.367503, 0, 0.0146317)
-visible = false
+transform = Transform3D(0.795, 0, 2.79397e-09, 0, 0.795, 0, -2.79397e-09, 0, 0.795, -0.0765736, 0, 0.000896931)
+
+[connection signal="bubble_entered" from="Node3D" to="." method="trigger"]
