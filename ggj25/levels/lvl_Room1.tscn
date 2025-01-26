@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://dwlis1l3yob3j" path="res://assets/materials/mat_ConcreteBrick.tres" id="11_rvy0d"]
 [ext_resource type="Script" path="res://scripts/scr_FloatEnding.tres.gd" id="11_yf4jm"]
 [ext_resource type="Material" uid="uid://dr1v0p3swvlos" path="res://assets/materials/mat_PillarThing.tres" id="12_20nt0"]
+[ext_resource type="Texture2D" uid="uid://d120mq4abyu4v" path="res://assets/sprites/page.png" id="12_ubeci"]
 [ext_resource type="Script" path="res://scripts/scr_SpinningWall.gd" id="13_cvp0f"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="14_wxooe"]
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
@@ -56,6 +57,9 @@ size = Vector3(15.9508, 3.53522, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1m4v8"]
 size = Vector3(17.9921, 5.28137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m76wk"]
+albedo_texture = ExtResource("12_ubeci")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcav0"]
 render_priority = 0
@@ -435,7 +439,7 @@ use_collision = true
 size = Vector3(0.861328, 1, 1)
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_2lqyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6829, 1.82582, 0.785926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37447, 1.82582, 3.00799)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
 transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 14.2979, 2.25, 0.957326)
@@ -728,8 +732,12 @@ script = ExtResource("11_yf4jm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23334, 4.12332, -2.21403)
 shape = SubResource("BoxShape3D_1m4v8")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.878158, -0.0122981, -0.000256835, 0.00953715, 1.13323, 3.33075e-06, -0.0162293, 0.000498955, -0.0138953, 7.6888, 2.97521, 4.94757)
+material_override = SubResource("StandardMaterial3D_m76wk")
+
 [node name="PfBubbleButton" parent="SubViewportContainer" instance=ExtResource("10_ou4ee")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25759, 2.51499, -13.1958)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.25759, 2.51499, -13.1958)
 
 [node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-134.038, 0, -0.230402, 0, 9.49386, 0, 232.161, 0, -0.133023, 39.2111, 3.39614, 3.09619)
