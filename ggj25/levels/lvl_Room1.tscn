@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=33 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -48,6 +48,11 @@ func _process(delta: float) -> void:
 
 
 func _on_node_3d_bubble_entered() -> void:
+	self.open = true
+	pass # Replace with function body.
+
+
+func _on_pf_bubble_button_triggered() -> void:
 	self.open = true
 	pass # Replace with function body.
 "
@@ -737,7 +742,7 @@ transform = Transform3D(0.878158, -0.0122981, -0.000256835, 0.00953715, 1.13323,
 material_override = SubResource("StandardMaterial3D_m76wk")
 
 [node name="PfBubbleButton" parent="SubViewportContainer" instance=ExtResource("10_ou4ee")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 9.25759, 2.51499, -13.1958)
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 19.3331, 2.51499, 10.2178)
 
 [node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-134.038, 0, -0.230402, 0, 9.49386, 0, 232.161, 0, -0.133023, 39.2111, 3.39614, 3.09619)
@@ -1610,10 +1615,10 @@ material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.591072, 0.564701, 1)
 
-[connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
 [connection signal="area_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_body_entered"]
+[connection signal="triggered" from="SubViewportContainer/PfBubbleButton" to="SubViewportContainer/SubViewport/PfDoor" method="_on_pf_bubble_button_triggered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate/Node3D" to="SubViewportContainer/PfDoor3" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/grate2/Node3D" to="SubViewportContainer/PfDoor2" method="_on_node_3d_bubble_entered"]
