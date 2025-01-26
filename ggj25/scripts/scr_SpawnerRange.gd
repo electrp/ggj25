@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node) -> void:
-	get_parent().can_shoot = false
+	get_parent().canShoot = false
 
 func _on_body_exited(body: Node) -> void:
-	get_parent().can_shoot = true
+	get_parent().canShoot = true
