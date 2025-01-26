@@ -23,5 +23,3 @@ func _physics_process(delta: float) -> void:
 	if(input_reset):
 		get_tree().reload_current_scene()
 	
-		
-	
