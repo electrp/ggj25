@@ -35,20 +35,20 @@ func _physics_process(delta: float) -> void:
 			continue
 
 		var rb = node as RigidBody3D
-		
-		var ray_origin = self.global_position
-		var ray_target = node.global_position
-		var space_state = get_world_3d().direct_space_state
-		
-		var query = PhysicsRayQueryParameters3D.new()
-		query.from = ray_origin
-		query.to = ray_target
-		query.collide_with_bodies = true
-		query.exclude = [self, node]
-		
-		var result = space_state.intersect_ray(query)
-		if result.size() > 0:
-			continue
+		#
+		#var ray_origin = self.global_position
+		#var ray_target = node.global_position
+		#var space_state = get_world_3d().direct_space_state
+		#
+		#var query = PhysicsRayQueryParameters3D.new()
+		#query.from = ray_origin
+		#query.to = ray_target
+		#query.collide_with_bodies = true
+		#query.exclude = [self, node]
+		#
+		#var result = space_state.intersect_ray(query)
+		#if result.size() > 0:
+			#continue
 
 		if falloff:
 			var dist: float = plane.distance_to(node.global_position)

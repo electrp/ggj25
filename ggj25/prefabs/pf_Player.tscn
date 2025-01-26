@@ -15,6 +15,7 @@ script = ExtResource("1_7qmpx")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["poppable"]]
 script = ExtResource("2_v3qta")
+jumpVel = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" groups=["poppable"]]
 mesh = SubResource("CapsuleMesh_ijbdt")
