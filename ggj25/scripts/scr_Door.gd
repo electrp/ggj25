@@ -29,6 +29,17 @@ func _physics_process(delta: float) -> void:
 		lerp(door_start.z, rads.z + door_start.z, current_t)
 	)
 	pass
+	
+func _open_handler() -> void:
+	open = true
 
 func _on_node_3d_bubble_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_bubble_button_triggered() -> void:
+	pass # Replace with function body.
+
+
+func _on_bubble_button_2_triggered() -> void:
 	pass # Replace with function body.

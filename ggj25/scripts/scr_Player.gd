@@ -18,7 +18,10 @@ func _physics_process(delta: float) -> void:
 		if(Input.is_action_just_pressed("Interact")):
 			pointing.interact(self)
 		pointing.hover(self)
+		
+	var input_reset := Input.is_action_pressed("Reset")
+	if(input_reset):
+		get_tree().reload_current_scene()
 	
 		
-		
-		
+	

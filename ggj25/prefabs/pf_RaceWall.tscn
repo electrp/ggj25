@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmmw62gvubinn"]
+
+[ext_resource type="Texture2D" uid="uid://bkjw4afgutnog" path="res://assets/textures/Bricks/Bricks_01-256x256.png" id="1_f2bko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8w8ab"]
+size = Vector3(4.30469, 11.0029, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl8t7"]
+albedo_texture = ExtResource("1_f2bko")
+uv1_scale = Vector3(7.67, 7.67, 7.67)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbacm"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_pl8t7")
+
+[node name="AnimatableBody3D" type="RigidBody3D" groups=["poppable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.10549, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.12, -0.0224609, 0.0295715, 0)
+shape = SubResource("BoxShape3D_8w8ab")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-6.08205e-09, 0, 4.14135, 0, 7.2214, 0, -0.139141, 0, -1.81024e-07, 0, -2.12887, 0)
+mesh = SubResource("BoxMesh_rbacm")
+skeleton = NodePath("../..")
