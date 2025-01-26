@@ -236,7 +236,7 @@ use_collision = true
 size = Vector3(0.396858, 0.194824, 1)
 
 [node name="WallLeft13" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(-10, 0, -2.32584e-08, 0, 9.49386, 0, 8.74228e-07, 0, -0.266045, 42.9878, 4.2832, 5.90066)
+transform = Transform3D(-9.94631, 0, -2.31335e-08, 0, 9.44289, 0, 8.69534e-07, 0, -0.264617, 42.9878, 4.2832, 5.90066)
 use_collision = true
 size = Vector3(0.360855, 0.304382, 1)
 
