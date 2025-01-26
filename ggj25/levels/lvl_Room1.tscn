@@ -354,7 +354,7 @@ use_collision = true
 size = Vector3(0.396858, 0.194824, 1)
 
 [node name="PfBubbleButton" parent="SubViewportContainer" instance=ExtResource("10_ou4ee")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25759, 2.7236, -13.3177)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.25759, 2.51499, -13.1958)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
 

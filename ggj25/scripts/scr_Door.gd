@@ -25,3 +25,6 @@ func _physics_process(delta: float) -> void:
 	
 	self.rotation = lerp(door_start, rads + door_start, current_t)
 	pass
+	
+func _open_handler() -> void:
+	open = true

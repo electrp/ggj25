@@ -15,8 +15,8 @@ const TARGET_SPRITE_SCALE = Vector3(3, 3, 3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	collision_shape.scale = Vector3(0, 0, 0)
-	sprite.scale = Vector3(0, 0, 0)
+	collision_shape.scale = Vector3(0.001, 0.001, 0.001)
+	sprite.scale = Vector3(0.001, 00.001, 00.001)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,12 +44,16 @@ func _on_body_entered(body: Node) -> void:
 		pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(linear_velocity * delta,false, 0.001, false, 4)
+	var collision = move_and_collide(linear_velocity * delta,false, 0.001, false, 2)
 	if collision:
-		if !(collision.get_collider() as Node3D).is_in_group(\"poppable\") :
+		if (collision.get_collider() as Node3D).is_in_group(\"poppable\") :
+			self.queue_free()
+		elif (collision.get_collider() as Node3D).is_in_group(\"BubbleButton\"):
+			collision.get_collider().trigger()
 			linear_velocity = linear_velocity.bounce(collision.get_normal())
 		else:
-			self.queue_free()
+			linear_velocity = linear_velocity.bounce(collision.get_normal())
+
 		
 "
 
@@ -75,5 +79,3 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_3g3et")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

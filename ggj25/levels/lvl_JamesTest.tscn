@@ -1,0 +1,229 @@
+[gd_scene load_steps=14 format=3 uid="uid://ijnb2538qm8n"]
+
+[ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_0v8sg"]
+[ext_resource type="Material" uid="uid://b7emld1r7yxmu" path="res://assets/materials/mat_Floor.tres" id="2_jxg3y"]
+[ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="3_d23ja"]
+[ext_resource type="PackedScene" uid="uid://j4sd65yaxc0i" path="res://prefabs/pf_BubbleSpawner.tscn" id="4_um06i"]
+[ext_resource type="PackedScene" uid="uid://blp4ky1vg6all" path="res://assets/materials/models/grate.fbx" id="5_pg1de"]
+[ext_resource type="PackedScene" uid="uid://cvtqjhvbijcac" path="res://prefabs/pf_Vent.tscn" id="6_wc5ot"]
+[ext_resource type="Material" uid="uid://bglg5a4gy00pv" path="res://assets/materials/mat_Wall.tres" id="7_2gfjs"]
+[ext_resource type="PackedScene" uid="uid://r5iernwak6gt" path="res://prefabs/pf_PauseMenu.tscn" id="8_epjbm"]
+[ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="9_m6ncy"]
+[ext_resource type="Script" path="res://scripts/scr_Door.gd" id="10_7ruml"]
+[ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_vhd0l"]
+[ext_resource type="Script" path="res://scripts/scr_BubbleButton.gd" id="11_b2lcy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
+shader = ExtResource("1_0v8sg")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="Node3D2" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_1nht1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
+transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, 1.3651, 0.354833, 0.112576)
+material_override = ExtResource("2_jxg3y")
+use_collision = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.0130407, -0.914685, 0.403957, -0.0295129, 0.404168, 0.914209, -0.999479, -3.72199e-08, -0.0322656, 13.3562, 19.5897, 0)
+
+[node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_d23ja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.214929, 1.82582, 10.6337)
+
+[node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_um06i")]
+transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 2.69477, 2.25992, 8.9499)
+
+[node name="grate" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_pg1de")]
+transform = Transform3D(-44.91, 0, 0, 0, 7.835, -1.17933e-07, 0, 6.84957e-07, 1.349, 4.60711, 2.34344, -1.75613)
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/grate" instance=ExtResource("6_wc5ot")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.014632)
+visible = false
+
+[node name="grate2" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_pg1de")]
+transform = Transform3D(-44.91, 0, 0, 0, 7.835, -1.17933e-07, 0, 6.84957e-07, 1.349, -3.14192, 2.34344, -9.968)
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/grate2" instance=ExtResource("6_wc5ot")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0.014632)
+
+[node name="BubbleButton2" parent="SubViewportContainer/SubViewport" instance=ExtResource("10_vhd0l")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 4.28653, 2.42753, -9.58686)
+script = ExtResource("11_b2lcy")
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport/BubbleButton2" instance=ExtResource("6_wc5ot")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0.367503, 0, 0.0146317)
+visible = false
+
+[node name="WallRight5" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -1.24104, 3.40086, -1.74133)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight7" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 3.76905, 5.42189, -1.68728)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight8" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 5.38855, 5.42189, -1.68886)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight9" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 5.37886, -0.696583, -1.68886)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight10" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 3.7734, -0.696583, -1.6706)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight11" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 10.4534, 3.29642, -1.67534)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight6" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -9.73391, 3.40086, -1.74133)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_epjbm")]
+
+[node name="PfDoor" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(3.10094, 4.02576e-07, 0.00331871, -2.71273e-07, 4.608, 0, -0.113164, -1.46914e-08, 0.0909395, -7.0497, 3.36378, -1.71764)
+door_time = 1.0
+door_end = Vector3(0, 90, 0)
+
+[node name="WallRight19" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -8.99008, 3.40086, -9.95319)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight20" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -3.97999, 5.42189, -9.89914)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight21" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -2.36049, 5.42189, -9.90072)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight22" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -2.37018, -0.696583, -9.90072)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight23" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -3.97564, -0.696583, -9.88246)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight24" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 2.70438, 3.29642, -9.88721)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight25" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -17.4829, 3.40086, -9.95319)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="PfDoor2" parent="." instance=ExtResource("9_m6ncy")]
+transform = Transform3D(3.103, 4.02844e-07, 0, -2.71273e-07, 4.608, 0, 0, 0, 0.091, -14.7987, 3.36378, -9.9295)
+door_time = 1.0
+open = true
+door_end = Vector3(0, 90, 0)
+
+[node name="WallRight12" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 1.52291, 3.40086, 5.39128)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+script = ExtResource("10_7ruml")
+
+[node name="WallRight13" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 6.533, 3.28321, 5.44533)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight14" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.1525, 3.316, 5.44375)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight15" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 8.14281, -0.696583, 5.44375)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight16" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 6.53735, -0.696583, 5.462)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight17" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, 13.2174, 3.29642, 5.45726)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="WallRight18" type="CSGBox3D" parent="." groups=["poppable"]]
+transform = Transform3D(-27.8161, 0, -2.32584e-08, 0, 9.49386, 0, 2.43176e-06, 0, -0.266045, -6.96996, 3.40086, 5.39128)
+material_override = ExtResource("7_2gfjs")
+use_collision = true
+size = Vector3(0.180817, 0.523438, 1)
+
+[node name="BubbleButton" parent="." instance=ExtResource("10_vhd0l")]
+transform = Transform3D(-2.78182e-08, 0, 1, 0, 1, 0, -1, 0, -2.78182e-08, 3.8145, 2.44584, 5.12752)
+
+[node name="Node3D" parent="BubbleButton" instance=ExtResource("6_wc5ot")]
+transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, -0.0626564, 0, 0.014632)
+visible = false
+
+[connection signal="triggered" from="SubViewportContainer/SubViewport/BubbleButton2" to="PfDoor" method="_open_handler"]
+[connection signal="bubble_entered" from="SubViewportContainer/SubViewport/BubbleButton2/Node3D" to="PfDoor" method="_open_handler"]
+[connection signal="bubble_entered" from="SubViewportContainer/SubViewport/BubbleButton2/Node3D" to="PfDoor2" method="_open_handler"]
+[connection signal="bubble_entered" from="BubbleButton/Node3D" to="PfDoor" method="_open_handler"]
+[connection signal="bubble_entered" from="BubbleButton/Node3D" to="PfDoor2" method="_open_handler"]
