@@ -59,7 +59,7 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 
 [node name="Floor" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
-transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, 0.00888634, 0.306467, 0.00823784)
+transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, 0.00841141, 0.301311, 0.0264606)
 material_override = ExtResource("2_03ixh")
 use_collision = true
 
