@@ -15,5 +15,4 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if(body.name == "Bubble"):
 		bubble_entered.emit()
-	print(body.name)
 	pass # Replace with function body.
