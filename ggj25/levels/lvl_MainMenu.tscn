@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddlyk2n3jecy5"]
 
 [ext_resource type="Texture2D" uid="uid://c13x7rex5gg88" path="res://assets/sprites/Play.png" id="1_3rk0f"]
+[ext_resource type="Texture2D" uid="uid://ca1cpxee5jnff" path="res://assets/textures/surfacetensiontitle.png" id="1_xyt4u"]
 [ext_resource type="Script" path="res://scripts/scr_PlayButton.gd" id="2_j8ran"]
 [ext_resource type="Texture2D" uid="uid://dqxv7a8epxruj" path="res://assets/sprites/Quit.png" id="3_21vuf"]
 [ext_resource type="Script" path="res://scripts/scr_QuitButton.gd" id="4_cgt0l"]
-[ext_resource type="Texture2D" uid="uid://bk8tk88gdybxp" path="res://assets/sprites/Title.png" id="5_v1cl2"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -20,7 +20,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Sprite2D" parent="Main/TitleControl"]
-texture = ExtResource("5_v1cl2")
+position = Vector2(20, 0)
+texture = ExtResource("1_xyt4u")
 
 [node name="PlayControl" type="Control" parent="Main"]
 layout_mode = 3
