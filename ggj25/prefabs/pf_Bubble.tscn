@@ -26,7 +26,7 @@ func _on_body_entered(body: Node) -> void:
 [sub_resource type="SphereShape3D" id="SphereShape3D_cghdm"]
 
 [node name="Bubble" type="RigidBody3D" groups=["bubble", "pushable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0181284, 1.78814e-07, 0.00431776)
+transform = Transform3D(0.999987, 0.00427753, -0.00265589, -0.00427133, 0.999988, 0.00234081, 0.00266585, -0.00232945, 0.999994, -0.0181284, 1.78814e-07, 0.00431776)
 disable_mode = 2
 collision_layer = 2
 gravity_scale = 0.0
