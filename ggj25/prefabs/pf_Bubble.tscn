@@ -6,15 +6,31 @@
 resource_name = "bubble"
 script/source = "extends Node3D
 
+@onready var collision_shape = $CollisionShape3D
+@onready var sprite = $Sprite3D
+
+const TARGET_COLLISION_SCALE = Vector3(1, 1, 1)
+const TARGET_SPRITE_SCALE = Vector3(3, 3, 3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	collision_shape.scale = Vector3(0, 0, 0)
+	sprite.scale = Vector3(0, 0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var collision_increment = 1.0 / TARGET_SPRITE_SCALE.x
+	var increment = delta * 5
+
+	if collision_shape.scale.length_squared() < TARGET_COLLISION_SCALE.length_squared():
+		collision_shape.scale += Vector3(collision_increment, collision_increment, collision_increment) * increment
+	else:
+		collision_shape.scale = TARGET_COLLISION_SCALE
+
+	if sprite.scale.length_squared() < TARGET_SPRITE_SCALE.length_squared():
+		sprite.scale += Vector3(1, 1, 1) * increment
+	else:
+		sprite.scale = TARGET_SPRITE_SCALE
 
 func _on_body_entered(body: Node) -> void:
 	print(\"bubble popped on \", body.name)

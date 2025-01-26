@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://j4sd65yaxc0i"]
+[gd_scene load_steps=5 format=3 uid="uid://j4sd65yaxc0i"]
 
 [ext_resource type="Script" path="res://scripts/scr_BubbleSpawner.gd" id="1_knpvm"]
 [ext_resource type="PackedScene" uid="uid://chisax6gmxmwm" path="res://prefabs/pf_Bubble.tscn" id="2_ake4c"]
+[ext_resource type="Script" path="res://scripts/scr_SpawnerRange.gd" id="3_hgtdv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwxhq"]
+size = Vector3(1.5, 8, 1.5)
 
 [node name="BubbleSpawner" type="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 0.0889834, 0, 0, 0, 1, 0, 0, 0)
@@ -9,10 +13,17 @@ script = ExtResource("1_knpvm")
 bubble_scene = ExtResource("2_ake4c")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, 0.1, 5.32907e-16, 0, -8.88178e-17, 0.6, 0, 1.221, 0.012)
+transform = Transform3D(0.6, 0, 0, 0, 0.1, 5.32907e-16, 0, -8.88178e-17, 0.6, 0, 1.221, 0)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.1, 7.10543e-16, 0, -8.88178e-17, 0.8, 0, 1.071, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 7.10542e-16, 0, -8.88178e-17, 0.8, 0, 1.071, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 44.554, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="SpawnerRange" type="Area3D" parent="."]
+script = ExtResource("3_hgtdv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnerRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_qwxhq")
