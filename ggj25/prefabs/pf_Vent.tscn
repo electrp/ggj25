@@ -1,16 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvtqjhvbijcac"]
+[gd_scene load_steps=3 format=3 uid="uid://cvtqjhvbijcac"]
 
 [ext_resource type="Script" path="res://scripts/scr_BubbleDetector.gd" id="1_h8h2f"]
-[ext_resource type="Shader" path="res://assets/shaders/pf_Vent.gdshader" id="2_e4gl5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iaa0c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkvne"]
-render_priority = 0
-shader = ExtResource("2_e4gl5")
-
-[sub_resource type="BoxMesh" id="BoxMesh_o1htn"]
-material = SubResource("ShaderMaterial_vkvne")
 
 [node name="PfVent" type="Area3D"]
 collision_mask = 3
@@ -18,9 +10,5 @@ script = ExtResource("1_h8h2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_iaa0c")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-layers = 3
-mesh = SubResource("BoxMesh_o1htn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
