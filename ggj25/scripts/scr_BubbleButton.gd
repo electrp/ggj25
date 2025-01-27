@@ -20,3 +20,4 @@ func enable() -> void:
 func trigger() -> void:
 	if enabled:
 		triggered.emit()
+		$AudioStreamPlayer3D.play()
