@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="14_wxooe"]
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
 [ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="16_irywk"]
-[ext_resource type="Texture2D" uid="uid://cm7y0djx6kghq" path="res://assets/sprites/spr_arrow.png" id="16_uuw1x"]
 [ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="17_q5fay"]
 [ext_resource type="Material" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="19_0of8b"]
@@ -29,8 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://ca1cpxee5jnff" path="res://assets/textures/surfacetensiontitle.png" id="20_a2b6w"]
 [ext_resource type="Script" path="res://levels/scr_TitleScript.gd" id="24_kkvkp"]
 [ext_resource type="AudioStream" uid="uid://b8yoos4uwwf2i" path="res://assets/sounds/amb_Apartment.wav" id="26_pwtb5"]
-[ext_resource type="Material" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
-[ext_resource type="Texture2D" uid="uid://cwx5j6vnc8jsw" path="res://assets/sprites/run.png" id="27_uk27a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_txtqo")
@@ -72,9 +69,6 @@ size = Vector3(17.9921, 5.28137, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m76wk"]
 albedo_texture = ExtResource("12_ubeci")
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcav0"]
-render_priority = 0
-shader = ExtResource("11_oxb8k")
 
 [sub_resource type="Curve3D" id="Curve3D_6f4ak"]
 _data = {
@@ -102,8 +96,6 @@ func _process(delta: float) -> void:
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcav0"]
 render_priority = 0
 shader = ExtResource("11_oxb8k")
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m76wk"]
-albedo_texture = ExtResource("12_ubeci")
 
 [node name="Node3D3" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
@@ -122,8 +114,6 @@ stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
@@ -654,10 +644,10 @@ use_collision = true
 size = Vector3(0.861328, 1, 1)
 
 [node name="Player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_2lqyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88488, 1.82582, -22.0582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.37447, 1.82582, 3.00799)
 
 [node name="BubbleSpawner" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_j1ux3")]
-transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 7.49998, 2.25, -21.8868)
+transform = Transform3D(-4.37114e-08, -0.130368, -4.37114e-08, 0, -5.69858e-09, 1, -1, 5.69858e-09, 1.91069e-15, 14.2979, 2.25, 0.957326)
 
 [node name="WallLeft3" type="CSGBox3D" parent="SubViewportContainer/SubViewport" groups=["poppable"]]
 transform = Transform3D(-4.37114e-07, 0, 0.266045, 0, 9.49386, 0, -10, 0, -1.16292e-08, 14.5768, 5.57578, -0.127202)
@@ -1207,6 +1197,7 @@ size = Vector3(0.0217559, 0.536621, 1)
 
 [node name="grate3" parent="SubViewportContainer" instance=ExtResource("5_d6it0")]
 transform = Transform3D(-4.15651e-06, 6.84957e-07, 1.349, -2.68571e-21, 7.835, -1.17933e-07, 31.6966, -2.15207e-14, 1.769e-07, 1.00796, 2.27221, -21.3483)
+visible = false
 
 [node name="Node3D" parent="SubViewportContainer/grate3" instance=ExtResource("3_xm7k1")]
 transform = Transform3D(1, 8.7423e-08, -8.95073e-07, -8.74226e-08, 1, 5.07754e-07, 8.95073e-07, -5.07754e-07, 1, 0, 0, 0)
@@ -1676,429 +1667,10 @@ size = Vector3(0.29726, 0.523438, 1)
 [node name="BubbleButton4" parent="Node3D" instance=ExtResource("10_ou4ee")]
 transform = Transform3D(-1, 0, -8.84149e-08, 0, 1, 0, 8.84149e-08, 0, -1, 2.48687, 1.92105, 11.513)
 
-[node name="SubViewport" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33.9408, 0.350595, 25.2759)
-
-[node name="Race" type="Node3D" parent="SubViewport"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.07456, 1.4553, -74.2802)
-
-[node name="Path3D" type="Path3D" parent="SubViewport/Race"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.33234, 0)
-curve = SubResource("Curve3D_6f4ak")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Race/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.08
-
-[node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
-collision_layer = 2
-collision_mask = 2
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-
-[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
-progress = 20.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.08
-
-[node name="AnimatableBody3D" parent="SubViewport/Race/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
-
-[node name="Path3D2" type="Path3D" parent="SubViewport/Race"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 4.713, -1.332, -0.005)
-curve = SubResource("Curve3D_6f4ak")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Race/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
-progress = 10.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.08
-
-[node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
-
-[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
-progress = 30.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.08
-
-[node name="AnimatableBody3D2" parent="SubViewport/Race/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527134, 4.05276, -0.00727844)
-
-[node name="Race2" type="Node3D" parent="SubViewport"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.95031, 1.4553, -115.681)
-
-[node name="Path3D" type="Path3D" parent="SubViewport/Race2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.332, 0)
-curve = SubResource("Curve3D_6f4ak")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Race2/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.12
-
-[node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D" instance=ExtResource("17_q5fay")]
-
-[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race2/Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
-progress = 20.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.12
-
-[node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D/PathFollow3D2" instance=ExtResource("17_q5fay")]
-
-[node name="Path3D2" type="Path3D" parent="SubViewport/Race2"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44961, -1.70635, -0.0807724)
-curve = SubResource("Curve3D_6f4ak")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Race2/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.99991)
-progress = 10.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.12
-
-[node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D" instance=ExtResource("17_q5fay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52013, 0)
-
-[node name="PathFollow3D2" type="PathFollow3D" parent="SubViewport/Race2/Path3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0001)
-progress = 30.0
-rotation_mode = 0
-script = SubResource("GDScript_nqwy0")
-speed = 0.12
-
-[node name="AnimatableBody3D" parent="SubViewport/Race2/Path3D2/PathFollow3D2" instance=ExtResource("17_q5fay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55638, 0)
-
-[node name="floor" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 83.1503, 0.0848904, -0.00707483, -56.2759)
-material_override = ExtResource("18_gagsc")
-use_collision = true
-size = Vector3(1, 1, 1.59917)
-material = ExtResource("18_gagsc")
-
-[node name="ceiling" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 83.1503, 0.0874157, 5.78817, -49.3484)
-material_override = ExtResource("19_0of8b")
-use_collision = true
-size = Vector3(1, 1, 1.42969)
-material = ExtResource("18_gagsc")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, 0)
-light_color = Color(0.7, 0.291667, 0, 1)
-spot_range = 6.22286
-spot_attenuation = -1.0
-spot_angle = 35.0007
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -12.3589)
-light_color = Color(0.7, 0.291667, 0, 1)
-spot_range = 6.22286
-spot_attenuation = -1.0
-spot_angle = 35.0007
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -21.3003)
-light_color = Color(0.7, 0.291667, 0, 1)
-spot_range = 6.22286
-spot_attenuation = -1.0
-spot_angle = 35.0007
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -30.345)
-light_color = Color(0.7, 0.291667, 0, 1)
-spot_range = 6.22286
-spot_attenuation = -1.0
-spot_angle = 35.0007
-
-[node name="SpotLight3D5" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.54922, -42.3494)
-light_color = Color(0.7, 0.291667, 0, 1)
-spot_range = 6.22286
-spot_attenuation = -1.0
-spot_angle = 35.0007
-
-[node name="wall" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, 4.37943, 2.88377, -63.2386)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 1, 1.26651)
-
-[node name="wall2" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -10, 2.88377, -31.7935)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-
-[node name="wall8" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 1.00726, -66.2184)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 0.211548, 1.33804)
-
-[node name="wall9" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 4.69639, -66.3987)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 0.290527, 1.34234)
-
-[node name="wall10" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -5, 2.72163, -67.8563)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 0.553162, 1.3073)
-
-[node name="wall3" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(-1.74846e-08, 0, -20.16, 0, 4.76, 0, 0.4, 0, -8.81221e-07, 0, 2.88377, 10)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-
-[node name="wall4" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(-1.74846e-08, 0, -8.064, 0, 4.76, 0, 0.4, 0, -3.52489e-07, -6, 2.88377, -10)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-
-[node name="wall5" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(-1.74846e-08, 0, -8.064, 0, 4.76, 0, 0.4, 0, -3.52489e-07, 6.02953, 2.88377, -10)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 1, 1.00732)
-
-[node name="wall6" type="CSGBox3D" parent="SubViewport"]
-transform = Transform3D(-1.74836e-08, 0, -3.96612, 0, 0.822481, 0, 0.399977, 0, -1.73365e-07, 0.00594878, 4.85146, -10.0043)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-
-[node name="Floor17" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -158.587, 1.50555, 25.3803)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0733633, 1, 0.118774)
-
-[node name="Floor18" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -158.496, 2.51999, 25.3803)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0503535, 1, 0.118774)
-
-[node name="Floor19" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -158.448, 3.58479, 25.3803)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.118774)
-
-[node name="WallRight11" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-27.816, 0, -0.000589732, 0, 3.96571, 0, 0.0616589, 0, -0.266044, -225.894, 1.38917, 24.936)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.691659, 0.964615, 1)
-
-[node name="WallRight12" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.384, 1.38917, 22.3455)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.198305, 0.964615, 1)
-
-[node name="WallRight13" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.312, 0.596202, 12.7156)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.491242, 0.564701, 1)
-
-[node name="WallRight14" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.35, 6.29442, 12.9316)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.484648, 1.60213, 1)
-
-[node name="WallRight5" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, -194.82, 4.95081, 54.0578)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(2.77918, 0.953125, 1)
-
-[node name="WallRight6" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(3.64764e-06, 0, -0.266045, 0, 9.49386, 0, 27.8161, 0, 3.48876e-08, -156.738, 4.95081, 59.7398)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(2.12282, 0.953125, 1)
-
-[node name="Floor20" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -165.906, 3.58479, 22.9008)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0681761)
-
-[node name="Floor21" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -172.575, 3.58479, 23.0683)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.071594)
-
-[node name="Floor22" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -180.989, 3.58479, 23.5229)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0808714)
-
-[node name="Floor23" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -180.989, 3.58479, 33.2905)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0255889)
-
-[node name="Floor24" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -172.459, 3.58479, 38.5073)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.096313, 1, 0.0255889)
-
-[node name="Floor25" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(1.29104e-05, 0, -98.0061, 0, 1.00099, 0, 98.4516, 0, 1.28519e-05, -163.449, 3.56904, 44.5513)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.096313, 1, 0.0255889)
-
-[node name="Floor26" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(98.4516, 0, 1.71359e-05, 0, 1.00099, 0, -1.72139e-05, 0, 98.0061, -172.179, 3.56904, 52.5074)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.096313, 1, 0.0255889)
-
-[node name="Floor27" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -184.674, 3.58479, 52.4524)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0255889)
-
-[node name="Floor28" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -193.72, 3.58479, 52.4671)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0255889)
-
-[node name="Floor29" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -202.515, 3.58479, 52.4524)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0255889)
-
-[node name="Floor30" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -211.185, 3.58479, 52.4524)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0227041, 1, 0.0255889)
-
-[node name="Floor31" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -211.306, 3.58479, 44.7296)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.0148923, 1, 0.0161018)
-
-[node name="Floor32" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -211.131, 3.58479, 36.1188)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.00769037, 1, 0.00793171)
-
-[node name="Floor33" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-98.4516, 0, -8.56796e-06, 0, 1.00099, 0, 8.60692e-06, 0, -98.0061, -211.49, 3.58479, 27.6702)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.00656125, 1, 0.00524616)
-
-[node name="WallRight15" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -231.652, 4.17295, 31.0477)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(1.84406, 2.36854, 1)
-
-[node name="Fan" parent="." instance=ExtResource("3_43o8t")]
-transform = Transform3D(5.91964e-07, 0, -84.5457, 0, 4.78283, 0, 4.51418, 0, 1.10868e-05, -147.576, 3.86226, 16.8114)
-power = 0.06
-
-[node name="WallRight7" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(27.8161, 0, 4.65168e-08, 0, 9.49386, 0, -4.86352e-06, 0, 0.266045, -181.129, 4.95081, 14.1174)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(2.52707, 0.953125, 1)
-
-[node name="Floor" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(100.099, 0, 0, 0, 1.00099, 0, 0, 0, 100.099, -195.913, 0.354833, 35.9055)
-material_override = ExtResource("2_03ixh")
-use_collision = true
-size = Vector3(0.937438, 1, 1)
-
-[node name="wall" type="CSGBox3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 4.76, 0, 0, 0, 83.8155, -149.907, 2.98807, 17.5511)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 1.04382, 0.0800062)
-
-[node name="WallRight16" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(27.816, 0, 0.000589755, 0, 3.96571, 0, -0.0616613, 0, 0.266044, -183.123, 0.596202, 19.3636)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(2.37552, 0.564701, 1)
-
-[node name="WallRight17" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(-27.816, 0, -0.000589732, 0, 3.96571, 0, 0.0616589, 0, -0.266044, -183.317, 6.29442, 19.539)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(2.37625, 1.60213, 1)
-
-[node name="wall9" type="CSGBox3D" parent="."]
-transform = Transform3D(-1.74846e-08, 0, -83.8155, 0, 4.76, 0, 0.4, 0, -3.66369e-06, -151.756, 7.0363, 30.2659)
-material_override = ExtResource("20_3b0b3")
-use_collision = true
-size = Vector3(1, 0.592041, 0.116175)
-
-[node name="WallRight18" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(0.0616601, 0, -0.266044, 0, 3.96571, 0, 27.816, 0, 0.000589744, -216.334, 2.44206, 3.01269)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.790682, 0.379395, 1)
-
-[node name="WallRight19" type="CSGBox3D" parent="." groups=["poppable"]]
-transform = Transform3D(27.816, 0, 0.000589755, 0, 3.96571, 0, -0.0616613, 0, 0.266044, -224.418, 0.602124, -7.50695)
-material_override = ExtResource("3_j23t1")
-use_collision = true
-size = Vector3(0.591072, 0.564701, 1)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_pwtb5")
 autoplay = true
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-2.04, 0, 1.78342e-07, 0, 2.04, 0, -1.78342e-07, 0, -2.04, 19.5471, 3.58706, 4.82991)
-texture = ExtResource("16_uuw1x")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.878158, -0.0122981, -0.000256835, 0.00953715, 1.13323, 3.33075e-06, -0.0162293, 0.000498955, -0.0138953, 7.65889, 2.94628, 4.95248)
-material_override = SubResource("StandardMaterial3D_m76wk")
-
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(-8.91712e-08, 0, 2.04, 0, 2.04, 0, -2.04, 0, -8.91712e-08, -45.4423, 3.54116, -6.31988)
-texture = ExtResource("16_uuw1x")
-
-[node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(2.04, 0, 0, 0, 2.04, 0, 0, 0, 2.04, -152.347, 3.96022, 19.6156)
-texture = ExtResource("16_uuw1x")
-
-[node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.953, 3.98691, 19.6243)
-texture = ExtResource("27_uk27a")
-
-[connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
 [connection signal="area_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_body_entered"]
