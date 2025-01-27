@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=35 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="17_q5fay"]
 [ext_resource type="Material" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="19_0of8b"]
+[ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
+[ext_resource type="AudioStream" uid="uid://b8yoos4uwwf2i" path="res://assets/sounds/amb_Apartment.wav" id="26_pwtb5"]
 [ext_resource type="Material" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
 [ext_resource type="Texture2D" uid="uid://cwx5j6vnc8jsw" path="res://assets/sprites/run.png" id="27_uk27a"]
 
@@ -1630,6 +1632,10 @@ transform = Transform3D(27.816, 0, 0.000589755, 0, 3.96571, 0, -0.0616613, 0, 0.
 material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.591072, 0.564701, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_pwtb5")
+autoplay = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-2.04, 0, 1.78342e-07, 0, 2.04, 0, -1.78342e-07, 0, -2.04, 19.5471, 3.58706, 4.82991)

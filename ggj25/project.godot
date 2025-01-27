@@ -14,6 +14,7 @@ config/name="Surfance Tension"
 config/version="1.0"
 run/main_scene="res://levels/lvl_MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://assets/sprites/2_umbrellas.png"
 config/icon="res://icon.svg"
 
 [display]
