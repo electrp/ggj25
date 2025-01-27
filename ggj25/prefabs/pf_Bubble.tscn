@@ -76,7 +76,6 @@ linear_damp = 0.952
 script = SubResource("GDScript_75yce")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["bubble"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00540876, -0.0206522, 0.00990057)
 shape = SubResource("SphereShape3D_cghdm")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

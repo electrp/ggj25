@@ -46,5 +46,9 @@ material_override = ExtResource("4_tjxdt")
 transform = Transform3D(2.5, 0, 0, 0, -1.09278e-08, 1.25, 0, -0.5, -1.09278e-07, 0.0136642, 1.46638, -0.0119386)
 material_override = ExtResource("4_tjxdt")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+current = true
+
 [node name="PortableFan" parent="CharacterBody3D" instance=ExtResource("3_dev6a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0456269, -0.604885, 0.52699)

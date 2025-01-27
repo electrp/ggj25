@@ -19,5 +19,3 @@ func _physics_process(delta: float) -> void:
 			pointing.interact(self)
 		pointing.hover(self)
 	
-		
-	
