@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b7kkhjp281kc6"]
+[gd_scene load_steps=36 format=3 uid="uid://b7kkhjp281kc6"]
 
 [ext_resource type="PackedScene" uid="uid://b5logkqgxqaun" path="res://prefabs/pf_Player.tscn" id="1_2lqyt"]
 [ext_resource type="Shader" path="res://assets/shaders/psx.gdshader" id="1_txtqo"]
@@ -12,19 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://dmjmirg3qxamh" path="res://prefabs/pf_Door.tscn" id="6_6pof4"]
 [ext_resource type="PackedScene" uid="uid://degkkr3dbs6jp" path="res://prefabs/pf_BubbleButton.tscn" id="10_ou4ee"]
 [ext_resource type="Shader" path="res://assets/shaders/pf_Vent.gdshader" id="11_oxb8k"]
-[ext_resource type="Material" path="res://assets/materials/mat_ConcreteBrick.tres" id="11_rvy0d"]
+[ext_resource type="Material" uid="uid://dwlis1l3yob3j" path="res://assets/materials/mat_ConcreteBrick.tres" id="11_rvy0d"]
 [ext_resource type="Script" path="res://scripts/scr_FloatEnding.tres.gd" id="11_yf4jm"]
-[ext_resource type="Material" path="res://assets/materials/mat_PillarThing.tres" id="12_20nt0"]
+[ext_resource type="Material" uid="uid://dr1v0p3swvlos" path="res://assets/materials/mat_PillarThing.tres" id="12_20nt0"]
 [ext_resource type="Texture2D" uid="uid://d120mq4abyu4v" path="res://assets/sprites/page.png" id="12_ubeci"]
 [ext_resource type="Script" path="res://scripts/scr_SpinningWall.gd" id="13_cvp0f"]
-[ext_resource type="Material" path="res://assets/materials/mat_MetalWall.tres" id="13_iapd7"]
+[ext_resource type="Material" uid="uid://bg5mr2fwflqpp" path="res://assets/materials/mat_MetalWall.tres" id="13_iapd7"]
 [ext_resource type="Script" path="res://scripts/scr_Door.gd" id="14_wxooe"]
 [ext_resource type="PackedScene" uid="uid://bxl6gnluuatao" path="res://prefabs/pf_DoorFan.tscn" id="15_cmk3t"]
 [ext_resource type="PackedScene" uid="uid://py3np05q8t3n" path="res://prefabs/pf_MovingBlock.tscn" id="16_irywk"]
+[ext_resource type="Texture2D" uid="uid://cm7y0djx6kghq" path="res://assets/sprites/spr_arrow.png" id="16_uuw1x"]
 [ext_resource type="PackedScene" uid="uid://dmmw62gvubinn" path="res://prefabs/pf_RaceWall.tscn" id="17_q5fay"]
-[ext_resource type="Material" uid="uid://wxviad6my54a" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
+[ext_resource type="Material" path="res://assets/materials/mat_BoilerFloor.tres" id="18_gagsc"]
 [ext_resource type="Material" uid="uid://s1i7of5tb10c" path="res://assets/materials/mat_BoilerCeiling.tres" id="19_0of8b"]
-[ext_resource type="Material" uid="uid://dvnuoxmc0fop8" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
+[ext_resource type="Material" path="res://assets/materials/mat_BoilingWalls.tres" id="20_3b0b3"]
+[ext_resource type="Texture2D" uid="uid://cwx5j6vnc8jsw" path="res://assets/sprites/run.png" id="27_uk27a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1nht1"]
 shader = ExtResource("1_txtqo")
@@ -64,9 +66,6 @@ size = Vector3(15.9508, 3.53522, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1m4v8"]
 size = Vector3(17.9921, 5.28137, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m76wk"]
-albedo_texture = ExtResource("12_ubeci")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcav0"]
 render_priority = 0
 shader = ExtResource("11_oxb8k")
@@ -93,6 +92,9 @@ func _process(delta: float) -> void:
 	progress_ratio += delta * speed
 	pass
 "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m76wk"]
+albedo_texture = ExtResource("12_ubeci")
 
 [node name="Node3D3" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 0.0289321, -0.00490856)
@@ -749,10 +751,6 @@ script = ExtResource("11_yf4jm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23334, 4.12332, -2.21403)
 shape = SubResource("BoxShape3D_1m4v8")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.878158, -0.0122981, -0.000256835, 0.00953715, 1.13323, 3.33075e-06, -0.0162293, 0.000498955, -0.0138953, 7.6888, 2.97521, 4.94757)
-material_override = SubResource("StandardMaterial3D_m76wk")
 
 [node name="WallRight11" type="CSGBox3D" parent="SubViewportContainer" groups=["poppable"]]
 transform = Transform3D(-134.038, 0, -0.230402, 0, 9.49386, 0, 232.161, 0, -0.133023, 39.2111, 3.39614, 3.09619)
@@ -1632,6 +1630,26 @@ transform = Transform3D(27.816, 0, 0.000589755, 0, 3.96571, 0, -0.0616613, 0, 0.
 material_override = ExtResource("3_j23t1")
 use_collision = true
 size = Vector3(0.591072, 0.564701, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-2.04, 0, 1.78342e-07, 0, 2.04, 0, -1.78342e-07, 0, -2.04, 19.5471, 3.58706, 4.82991)
+texture = ExtResource("16_uuw1x")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.878158, -0.0122981, -0.000256835, 0.00953715, 1.13323, 3.33075e-06, -0.0162293, 0.000498955, -0.0138953, 7.65889, 2.94628, 4.95248)
+material_override = SubResource("StandardMaterial3D_m76wk")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-8.91712e-08, 0, 2.04, 0, 2.04, 0, -2.04, 0, -8.91712e-08, -45.4423, 3.54116, -6.31988)
+texture = ExtResource("16_uuw1x")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(2.04, 0, 0, 0, 2.04, 0, 0, 0, 2.04, -152.347, 3.96022, 19.6156)
+texture = ExtResource("16_uuw1x")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.953, 3.98691, 19.6243)
+texture = ExtResource("27_uk27a")
 
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate/Node3D" to="SubViewportContainer/SubViewport/PfDoor" method="_on_node_3d_bubble_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]

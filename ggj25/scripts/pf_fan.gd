@@ -50,3 +50,11 @@ func _physics_process(delta: float) -> void:
 			rb.apply_impulse(power * scale * plane.normal)
 		else:
 			rb.apply_impulse(power * plane.normal)
+
+
+func _on_pre_bubble_button_triggered() -> void:
+	pass # Replace with function body.
+
+
+func _on_bubble_button_3_triggered() -> void:
+	pass # Replace with function body.
