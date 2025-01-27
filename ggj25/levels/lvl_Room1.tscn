@@ -1458,28 +1458,6 @@ size = Vector3(0.0295412, 0.218017, 1)
 transform = Transform3D(-3.838, 0, 1.66978e-08, 0, 1.372, 0, -3.35528e-07, 0, -0.191, 60.3887, 1.9144, 30.785)
 script = SubResource("GDScript_a0aq6")
 
-[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport/SubViewport"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport/SubViewport/Node2D"]
-
-[node name="TitleControl" type="Control" parent="SubViewportContainer/SubViewport/SubViewport/Node2D/CanvasLayer"]
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.4
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Title" type="Sprite2D" parent="SubViewportContainer/SubViewport/SubViewport/Node2D/CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(670, 330)
-texture = ExtResource("20_a2b6w")
-script = ExtResource("24_kkvkp")
-
-[node name="PauseMenu" parent="SubViewportContainer/SubViewport/SubViewport" instance=ExtResource("5_upi7x")]
-
 [node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport/SubViewport"]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 20.0875, -0.350593, -8.95669)
 
@@ -1670,6 +1648,28 @@ size = Vector3(0.012805, 0.540283, 1)
 [node name="BubbleButton4" parent="SubViewportContainer/SubViewport/SubViewport/Node3D" instance=ExtResource("10_ou4ee")]
 transform = Transform3D(-1, 0, -8.84149e-08, 0, 1, 0, 8.84149e-08, 0, -1, 2.48687, 1.92105, 11.513)
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
+
+[node name="TitleControl" type="Control" parent="Node2D/CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Sprite2D" parent="Node2D/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(670, 330)
+texture = ExtResource("20_a2b6w")
+script = ExtResource("24_kkvkp")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_upi7x")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_pwtb5")
 autoplay = true
@@ -1698,7 +1698,7 @@ texture = ExtResource("31_m1vyk")
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
 [connection signal="area_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/Area3D" method="_on_body_entered"]
-[connection signal="end" from="SubViewportContainer/SubViewport/Area3D" to="SubViewportContainer/SubViewport/SubViewport/Node2D/CanvasLayer/Title" method="_on_area_3d_end"]
+[connection signal="end" from="SubViewportContainer/SubViewport/Area3D" to="Node2D/CanvasLayer/Title" method="_on_area_3d_end"]
 [connection signal="area_entered" from="SubViewportContainer/SubViewport/Area3D/Area3D" to="SubViewportContainer/SubViewport/Area3D/Area3D" method="_on_area_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Area3D/Area3D" to="SubViewportContainer/SubViewport/Area3D/Area3D" method="_on_body_entered"]
 [connection signal="bubble_entered" from="SubViewportContainer/SubViewport/SubViewport/grate3/Node3D" to="SubViewportContainer/SubViewport/PfDoor2" method="_on_node_3d_bubble_entered"]
