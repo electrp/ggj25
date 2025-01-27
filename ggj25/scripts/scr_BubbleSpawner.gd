@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 		
 	if spawned_bubble != null:
 		$AudioStreamPlayer3D.position = spawned_bubble.position
-		print($AudioStreamPlayer3D.position)
 		
 	pass
 
